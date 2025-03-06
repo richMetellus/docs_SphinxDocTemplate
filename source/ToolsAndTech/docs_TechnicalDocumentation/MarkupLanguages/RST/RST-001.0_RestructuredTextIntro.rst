@@ -162,7 +162,7 @@ Get Started
          watch for changes as I edit the document.
 
          .. hint:: Once the documentation build outputs, say html files, are 
-            generated, Open the document in the browser using incognito mode 
+            generated, open the document ``index.html`` in the browser using incognito mode 
             so that the browser does not cache data.
             
             .. seealso:: An example of sphinx project is available 
@@ -177,6 +177,6 @@ References
 
 .. [1]  `reStructuredText Markup Specification`_
 
-.. _sphinx project template: https://github.com/richMetellus/Wiki_PythonSphinxTopicTemplate
+.. _sphinx project template: https://github.com/richMetellus/docs_SphinxDocTemplate
 
 .. _reStructuredText Markup Specification: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html

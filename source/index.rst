@@ -41,6 +41,7 @@ This doc
 * it will continue to evolve as more tools are being developed, integrated into 
   the python or Javascript ecosystem. If better alternative to `Sphinx`_ for rst, .md compatible
   documents are available, they will be documented in ``docs_TechnicalDocumentation`` 
+  repository instead of the local copy added in this template.
 
 .. sidebar:: It is also possible to use Jupyter Notebook with markdown (MyST) and use 
    `Jupyter Book <https://jupyterbook.org/en/stable/intro.html>`_
@@ -50,7 +51,7 @@ This doc
      or you can do something more complex with custom scripts, to aggrade all your 
      documents in one place and build a single release or multiple releases. You are 
      only limited by your creativity. The same way you write code for complex 
-     project, you can do that with documentation as code (CI/CD, DVCS, etc...).
+     project, you can do that with documentation as code (CI/CD, DVCS, docker, etc...).
    
    .. note:: This template is not meant to add that complexity. It is the 
        simplest and most basic way to get started. 
