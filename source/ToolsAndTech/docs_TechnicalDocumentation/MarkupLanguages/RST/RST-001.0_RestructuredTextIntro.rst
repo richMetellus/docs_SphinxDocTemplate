@@ -1,0 +1,182 @@
+.. -*- coding: utf-8 -*-
+
+Restructured Text (rST) Intro
+################################
+
+reStructuredText 
+
+* is a plaintext markup language specification that was evolved out of StructuredText (developed by Zope
+  Corporation - formerly Digital Creations) and Setext.
+* uses simple and intuitive constructs, which are 
+  are equally easy to read in raw and processed forms, to indicate the structure 
+  of a document. [1]_
+* introduced on June 2001, by David Goodger as part of the Python Docutils 
+  project as an extensible markup language for Python documentation.
+* designed for extensibility for specific application domains.  
+* uses ``.rst`` as file extension for document written in reStructuredText syntax.
+
+.. note:: The specification is freely available on 
+    `docutils site <https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html>`_
+
+Why Use reStructuredText?
+**************************
+
+reStructuredText (rST) is a lightweight markup language used primarily for 
+technical documentation. It is easy to read and write, making it a popular 
+choice for Python documentation, Sphinx projects, and other 
+software-related content.
+
+**Why use it**?
+
+* Simple and readable syntax 
+* Support structured formatting, including tables, lists, images, code snippet 
+  and pigmentation.
+* extensive support and usage in open source project
+* can be used for documentation as code
+* more cohesive and standardized than markdown.
+* very powerful 
+* works well with **Sphinx**, **Python docstrings**, **C/C++ doxygen style docstrings**,
+* and integrate well **Read the Docs** document hosting platform when used within 
+  a Sphinx project.
+
+Get Started 
+************
+
+1. You can search *GitHub* for ``path:*.rst`` or *Google* for an example of 
+   reStructuredText document or copy the ``example.rst`` file provided below in 
+   this document.
+    
+   .. _exampleRSTCode:
+
+   .. code-block:: restructuredtext
+      :caption: example.rst 
+
+      reStructuredText (rST) is a lightweight markup language used primarily 
+      for technical documentation. It is easy to read and write, making it a 
+      popular choice for Python documentation, Sphinx projects, and other 
+      software-related content.
+
+      **Basic Formatting**
+
+      In rST, you can use single asterisk for *italic*,  double 
+      asterisk for **bold**, and double backtics for ``inline code``
+
+      You can also create an unordered list using ``-``, ``*`` or ``+`` for 
+      bullet points:
+
+      - hey, i'm a bullet point 
+      - another bullet point 
+      
+        - use an empty line + indentation (3 or 4 spaces) for sub element 
+        - another sub-item 
+  
+      - keep an empty line in between top element and sub-elements. If the paragraph need to be 
+        wrapped, keep the text aligned and the same level of indentation.
+      - no empty line needed here but you can add one if you would like. 
+
+      you can add a break using ``|`` syntax to create more space in between paragraphs
+
+      |
+
+      + a bullet point using the ``+`` syntax 
+      
+      * another bullet point using the ``*`` syntax. When mixing syntax, keep 
+        a blank line in between to avoid warning.
+      
+      **ordered list**
+
+      1. item 1 in the list 
+      2. item 2 
+      #. use ``#.`` for auto-numbering 
+
+      You can also specify the number at which the list should start 
+
+      10. item 10 
+      #. item 11 
+      #. so on and so forth
+
+      You can also have sub ordered list 
+
+      1. item 1 
+
+          I. Item one using ``I.`` roman numerals 
+          #. Roman numeral item number ``1.II``
+          #. So on and so forth 
+      
+      #. Item 2 
+
+          A. another sub list, first item using ``A.`` as a capital letter for 
+             ordering.  
+          #. sub list, 2nd item (auto numbering)
+      
+      #. item 3 
+
+          a. another sub list , using lower case letter 
+          #. item b 
+      
+      #. item 4 
+
+          1. using sub nested 
+          #. item 2 
+      
+      You can also mix bullet point and ordered list and vice versa: 
+
+      1. A list as top level element
+
+          * a bullet point 
+          * another bullet point 
+      
+      
+      * A bullet point as top level element 
+
+          1. a list of sub element 
+          #. another list element 
+
+             | ... 
+
+
+          5. jump to item 5
+
+
+2. Use an editor to modify the document in step 1. 
+   
+   You can use the following options for editing:
+
+   A. practice with an online reStructuredText editor/playground such as 
+      https://rsted.info.ucl.ac.be/,
+
+      .. hint:: you can search on google for available restructuredtext playground.
+       
+   #. or use Microsoft Visual Studio Code and search for ``reStructuredText`` 
+      extension that offers previews. 
+
+      .. important:: VSCode marketplace has a `reStructuredText VSCode extension 
+          pack by LeXtudio Inc <https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext-pack>`_
+          that can be used.
+
+
+   #. or use ``.rst`` file within a sphinx project and build the project
+
+      .. note:: This is the approach I have used to create this document you are 
+         currently viewing. The ``sphinx-autobuild`` builder makes it possible to 
+         watch for changes as I edit the document.
+
+         .. hint:: Once the documentation build outputs, say html files, are 
+            generated, Open the document in the browser using incognito mode 
+            so that the browser does not cache data.
+            
+            .. seealso:: An example of sphinx project is available 
+               on via as `sphinx project template`_
+
+
+.. seealso:: To see more advance features of restructuredtext, checkout the 
+    :ref:`rST cheatsheet <rstCheatsheetGuide>`
+
+References 
+************
+
+.. [1]  `reStructuredText Markup Specification`_
+
+.. _sphinx project template: https://github.com/richMetellus/Wiki_PythonSphinxTopicTemplate
+
+.. _reStructuredText Markup Specification: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html

@@ -37,7 +37,7 @@ help:
 livehtml:
 	sphinx-autobuild --port 8002 "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-booktheme-livedoc:
+livehtml-booktheme:
 	sphinx-autobuild --port 8001 -D html_theme='sphinx_book_theme' "$(SOURCEDIR)" "$(BUILDDIRBOOK)" $(SPHINXOPTS) $(O)
 
 livehtml-personal:

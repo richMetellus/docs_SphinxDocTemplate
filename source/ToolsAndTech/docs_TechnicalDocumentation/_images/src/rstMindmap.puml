@@ -1,0 +1,108 @@
+
+@startmindmap
+<style>
+mindmapDiagram {
+    :depth(2) {
+      BackGroundColor gold
+    }
+}
+</style>
+
+*[#Orange] Document.rst <document>
+** Structure
+***: .. <section> Example 1
+
+<code>
+Title (H1)
+##########
+
+...
+
+Subtitle (H2) 
+*************
+
+...
+
+Section (H3)
+============
+...
+H4
+--
+...
+H5 
+^^
+...
+H6
+""
+...
+
+</code>
+;
+
+** Body or body elements
+***[#lightyellow] Paragraphs \n \
+<paragraph>
+****_ block text separated by a blank line
+****_ which can **ONLY** include text and inline markup/element for special formating. \n \
+Block-level elements/nodes are not considered children of <paragraph> node \n \
+in Docutils Document Tree (DTD)
+****[#lightyellow] text
+**** plus inline markup elements
+
+*** Character Markup
+****_ Special characters understood by the parser
+****_ can be used to form compound body elements \
+(bullet list, grid table, etc...)
+****_ Examples 
+***** +, -, *, |, #, =, `, etc...
+***** underscore _, double underscore __
+
+*** Inline Markup
+****_ allows words and phrases within text to have character styles \n \
+(like italics and boldface) and functionality (like hyperlinks).
+****_ starts and ends with special characters markup
+****_ Examples
+***** *italics* \n\
+<emphasis>
+***** **bold** \n\
+<strong>
+***** `inline literal` \n\
+<literal>
+***** footnote [1]_ \n\
+<footnote_reference>
+***** citation reference [CIT10]_
+***** `external hyperlink reference`_ 
+***** anonymous__ reference
+***** standalone external hyperlink \n \
+http://www.example.com
+***** \|substitution reference|
+
+*****[#lightgreen] roles 
+****** :math:
+****** :code:
+****** etc...
+
+
+*** Explicit Markup
+****_ starts with 2 dots ".." followed by whitespace
+****_ may have indented text block as body \n\
+(As in the case of directive)
+****_ Examples:
+***** Comments
+*****[#lightgreen] Directives
+****** .. code::
+****** .. admonitions::
+****** .. list-table::
+****** .. image::
+****** .. figure::
+****** .. role::
+****** .. default-role::
+****** .. contents::
+****** etc...
+***** Footnotes Definition \n\
+<footnote>
+***** Citations Definition
+***** Hyperlink Targets Definition
+***** Substitution Definition
+
+@endmindmap

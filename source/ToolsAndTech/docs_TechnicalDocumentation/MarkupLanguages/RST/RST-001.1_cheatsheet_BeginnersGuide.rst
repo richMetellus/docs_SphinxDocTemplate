@@ -1,0 +1,1354 @@
+.. _rstCheatsheetGuide:
+
+
+rST Cheatsheet: A Comprehensive Guide to reStructuredtext
+##########################################################
+
+:Version: |version|
+:Date Last Updated: |today|
+:Document type: Tutorial/Guide
+
+Document Structure
+******************
+
+Unlike Markdown, within a restructuredtext document normally there are no heading levels 
+assigned to certain characters as the structure is determined from the succession 
+of headings. 
+
+Markdown document usually have a strict heading::
+    
+   # header 1 
+   ## header 2 
+   ### header 3
+   #### header 4
+   #### header 5 
+   ###### header 6
+
+Although any rST document parser will accept some heading like this 
+::
+
+   ==================
+   Header 1 Section
+   ==================
+
+   Header 2 subsection 
+   ====================
+
+   Header 3 
+   -----------
+
+However, with restructured text, the convention is to use the Python's Style 
+Guide for documenting
+
+``#`` with overline, for parts
+
+``*`` with overline, for chapters
+
+``=``, for sections
+
+``-``, for subsections
+
+``^``, for sub-subsections
+
+``"``, for paragraphs
+
+For my preference, I use the following convention
+
+1. For header 1 and 2 you can use underline and overline for the tile, but I prefer 
+   to use underline only.
+#. I use the following characters for the heading levels
+
+   * ``#`` for H1
+   * ``*`` for H2
+   * ``=`` for H3
+   * ``-`` for H4
+   * ``^`` for H5
+   * ``"`` for H6
+
+
+My document structure is usually as followed::
+
+    Header Level 1 for Title 
+    ########################
+
+    Sample H2 for subtitle
+    ***********************
+
+    The underline must be at least as long as the (sub-) title text.
+
+    Another H2
+    **********
+
+    Sample H3
+    =========
+
+    Sample H4
+    ---------
+
+    Sample H5
+    ^^^^^^^^^
+
+    Sample H6
+    """""""""
+
+Basic Syntax
+*************
+
+Text Formatting 
+================
+
+In rST, you can use single asterisk for *italic*,  double 
+asterisk for **bold**, and double backtics for ``inline code``. These are examples 
+of inline markup.
+
+- **Bold text**: ``**Bold text**``
+- *Italic*: ``*italic*``
+- Inline literal ``code``: ````code````
+
+  - Spacings are preserved in inline literal text, but line breaks are not.
+
+  +----------------------------------------------------+----------------------------------------------------+
+  | **Raw Text**                                       | **Raw Text**                                       |
+  +----------------------------------------------------+----------------------------------------------------+
+  | ::                                                 |                                                    |
+  |                                                    |                                                    |
+  |    ``M o n o s p a c e``                           |    ``M o n o s p a c e``                           |
+  |                                                    |                                                    |
+  +----------------------------------------------------+----------------------------------------------------+
+  | ::                                                 |                                                    |
+  |                                                    |                                                    |
+  |    ``M o n o                                       |    ``M o n o                                       |
+  |    s p a c e``                                     |    s p a c e``                                     |
+  |                                                    |                                                    |
+  +----------------------------------------------------+----------------------------------------------------+
+    
+.. note:: Inline markup cannot be nested. So you cannot 
+   use something like this
+
+   +-------------------------------------------+-------------------------------------------+
+   | **Raw Text**                              | **Rendered as**                           |
+   +-------------------------------------------+-------------------------------------------+
+   |::                                         |                                           |                                       
+   |                                           |                                           | 
+   |   **I want bold and *italic* text**.      |   **I want bold and *italic* text**.      |                                       
+   |                                           |                                           | 
+   +-------------------------------------------+-------------------------------------------+                                            
+
+Escaping and Character-level markup 
+------------------------------------
+
+You can escape/override the special characters given to markup characters 
+by using a backslash ``\`` 
+
+You can also apply formatting to a single character or part of a word using 
+a backslash.
+
+To get a literal backslash, use an escaped backslash ("\\"). 
+
++----------------------------------------------------+------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                |
++----------------------------------------------------+------------------------------------------------+
+| ::                                                 |                                                |
+|                                                    |                                                |
+|    **C**\ontroller **A**\rea **N**\etwork          | **C**\ontroller **A**\rea **N**\etwork         |
+|                                                    |                                                |
++----------------------------------------------------+------------------------------------------------+
+| ::                                                 |                                                |
+|                                                    |                                                |
+|    *escape* ``with`` "\"                           | *escape* ``with`` "\"                          |
++----------------------------------------------------+------------------------------------------------+
+| ::                                                 |                                                |
+|                                                    |                                                |
+|    \*escape* \``with`` "\\"                        | \*escape* \``with`` "\\"                       |
++----------------------------------------------------+------------------------------------------------+
+
+Unicode 
+---------
+
+**Unicode** 
+
+By default `Sphinx`_, Docutils assume UTF-8 encoding. Thus, unicode characters 
+are also supported out of the box. You can simply 
+paste it in the document as needed. Examples:
+
+* α, β, γ, δ, ε, ζ, η, θ, ι, κ, λ, μ, ν, ξ, ο, π, ρ, σ, τ, υ, φ, χ, ψ, ω.
+* PlayStation®
+* SONY™
+
+or you can also use the ``.. unicode::`` directive to include unicode characters.
+(More on directives later).
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                | **Rendered As**                             |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   You can use text substitution to insert   |You can use text substitution to insert      |
+|   specific text or syntax at a specific area|specific text or syntax at a specific area   |
+|   in the document.                          |in the document.                             |
+|                                             |                                             |
+|    SONY |TM|                                |SONY |TM|                                    |
+|                                             |                                             |
+|    PlayStation |RTM|                        |PlayStation |RTM|                            |                                   
+|                                             |                                             |
+|    .. |TM| unicode:: U+2122                 |.. |TM| unicode:: U+2122                     |
+|    .. |RTM| unicode:: U+00AE                |.. |RTM| unicode:: U+00AE                    |
+|                                             |                                             |
+|                                             |                                             |
++---------------------------------------------+---------------------------------------------+
+
+Block Literals 
+===============
+
+You can use double colon ``::`` to create a block literal. The parser will not 
+interpret the block literal text as markup.
+
++-------------------------------------------------------+-------------------------------------------------------+
+| **Raw Text**                                          | **Rendered As**                                       |   
++-------------------------------------------------------+-------------------------------------------------------+
+| ::                                                    |                                                       |
+|                                                       |                                                       |
+|   ::                                                  |::                                                     |
+|                                                       |                                                       |
+|      Block literals are what-you-see is               |   Block literals are what-you-see is                  |
+|      what-you-get. Markups are not                    |   what-you-get. Markups are not                       |
+|      rendered                                         |   rendered                                            |
+|                                                       |                                                       |                
+|      - **Bold text**: ``**Bold text**``               |   - **Bold text**: ``**Bold text**``                  |
+|      - *Italic*: ``*italic*``                         |   - *Italic*: ``*italic*``                            |                      
+|      - ``Monospace``: ````Monospace````               |   - ``Monospace``: ````Monospace````                  |
+|      - Inline literal ``code``: ````code````          |   - Inline literal ``code``: ````code````             |
+|                                                       |                                                       |
++-------------------------------------------------------+-------------------------------------------------------+
+
+Paragraphs 
+===========
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|    Paragraphs are simply texts separated by | Paragraphs are simply texts separated by    | 
+|    blank lines.                             | blank lines.                                |
+|                                             |                                             |  
+|    This is another paragraph separated by a | This is another paragraph separated by a    |     
+|    blank line from the previous one.        | blank line from the previous one.           |                         
+|    The spacing between paragraphs are       | The spacing between paragraphs are          |
+|    usually controlled by the document theme | usually controlled by the document theme    |   
+|    (.css). Extra blank lines are ignored.   | (.css). Extra blank lines are ignored.      |
+|                                             |                                             |
+|                                             |                                             |
+|    This is another paragraph separated by   | This is another paragraph separated by      |     
+|    multiple blank lines from the previous   | multiple blank lines from the previous      |
+|    one.                                     | one.                                        |
++---------------------------------------------+---------------------------------------------+
+
+You can use the ``|`` syntax to add additional breaks in between paragraphs or to simply 
+keep the text aligned.
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|    Paragraphs are simply texts separated by | Paragraphs are simply texts separated by    | 
+|    blank lines.                             | blank lines.                                |
+|                                             |                                             |
+|    |                                        | |                                           |
+|                                             |                                             |  
+|    This is another paragraph separated from | This is another paragraph separated from    |     
+|    the previous one by a force break.       | the previous one by a force break.          |                         
++---------------------------------------------+---------------------------------------------+
+
+Line Blocks 
+------------
+
++----------------------------------------------+----------------------------------------------+
+| **Raw**                                      | **Rendered as**                              |
++----------------------------------------------+----------------------------------------------+
+| ::                                           |                                              |
+|                                              |                                              |
+|   Line blocks are useful for paragraphs that |   Line blocks are useful for paragraphs that |
+|   are pre-formatted, where you want to keep  |   are pre-formatted, where you want to keep  |               
+|   the paragraph structure.  For example      |   the paragraph structure.  For example      |         
+|   poetry, or addresses.                      |   poetry, or addresses.                      |   
+|                                              |                                              |                       
+|   | This is a *line block*. It begins with a |   | This is a *line block*. It begins with a |            
+|   | vertical bar "|" and a space.            |   | vertical bar "|" and a space.            |                   
+|   | This is another line in the block. Each  |   | This is another line in the block. Each  |               
+|   | new line begins with ``|``.              |   | new line begins with ``|``               |                   
+|   |   Line breaks and initial indents        |   |    Line breaks and initial indents       |                       
+|   |   are preserved.                         |   |    are preserved.                        |                   
+|   | Continuation lines are wrapped           |   | Continuation lines are wrapped           |                   
+|     portions of long lines; they begin       |     portions of long lines; they begin       |                   
+|     with spaces in place of vertical bars.   |     with spaces in place of vertical bars.   |    
+|                                              |                                              |
++----------------------------------------------+----------------------------------------------+
+| ::                                           |                                              |
+|                                              |                                              |
+|    | **The Eagle**                           |   | **The Eagle**                            |                                        
+|    | By Alfred, Lord Tennyson                |   | By Alfred, Lord Tennyson                 |
+|                                              |                                              |
+|    | He clasps the crag with crooked hands;  |   | He clasps the crag with crooked hands;   | 
+|    | Close to the sun in lonely lands,       |   | Close to the sun in lonely lands,        |  
+|    | Ring'd with the azure world, he stands  |   | Ring'd with the azure world, he stands   | 
+|    | The wrinkled sea beneath him crawls;    |   | The wrinkled sea beneath him crawls;     |     
+|    | He watches from his mountain walls,     |   | He watches from his mountain walls,      |    
+|    | And like a thunderbolt he falls.        |   | And like a thunderbolt he falls.         |  
+|                                              |                                              | 
+|                                              |                                              | 
++----------------------------------------------+----------------------------------------------+
+
+Block Quotes [1]_
+------------------
+
++----------------------------------------------+-----------------------------------------------+
+| **Raw**                                      | **Rendered as**                               |
++----------------------------------------------+-----------------------------------------------+
+| ::                                           |                                               |
+|                                              |                                               |
+|   Block quotes are just:                     |Block quotes are just:                         |
+|                                              |                                               |
+|       Indented paragraphs,                   |    Indented paragraphs,                       |
+|                                              |                                               |
+|           and they may nest.                 |        and they may nest.                     |
++----------------------------------------------+-----------------------------------------------+
+
+Inserting Comments 
+===================
+
+You can add a comment in the document using the markup ``..`` syntax 
+followed by the comment text. 
+
+.. note:: Comments are ignored by the parser.
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   .. This single line comment is ignored.   |   .. This single line comment is ignored.   |
+|   This is a text below the comment (No blank|   This is a text below the comment (No blank|
+|   line after the comment, so we might get   |   line after the comment, so we might get   |  
+|   a warning from parser).                   |   a warning from parser).                   |              
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   .. This is a multi-line comment.          |   .. This is a multi-line comment.          |
+|      it is also ignored by the parser.      |      it is also ignored by the parser.      |
+|      Whitespace and indentation matter.     |      Whitespace and indentation matter.     |
+|                                             |                                             |
+|   This is a text below the comment,         |   This is a text below the comment,         |                                                        
+|   separated by a blank line.                |   separated by a blank line.                |          
++---------------------------------------------+---------------------------------------------+
+
+**Empty comment**
+
+An empty comment starts with ``..``  surrounded by blank lines before and after the ``..`` 
+and contains no text.
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   Believe it or not, an empty comment syntax| Believe it or not, an empty comment syntax  |
+|   is added below this line.                 | is added below this line.                   |
+|                                             |                                             |
+|   ..                                        | ..                                          |                
+|                                             |                                             |
+|   Another paragraph below the empty comment | Another paragraph below the empty comment   |
+|   separated by a blank line.                | separated by a blank line.                  |
++---------------------------------------------+---------------------------------------------+
+
+.. _important-notice-with-indentation-SectionStart:
+
+.. important:: Be careful with the indentation as you write your 
+   documents. In `Sphinx`_  the indent is not a 
+   fixed number. This template demonstrate how different themes (book theme, 
+   piccolo theme) might treat the whitespace indentation. Some themes and 
+   directives are sensitive to whitespace.
+
+   My recommendation is
+
+   1. Set your VSCode space tab to *Indent Using Spaces* with a value of 3.
+
+   **For Directives**
+
+   2. The directive name the :option: and the body 
+      all should be aligned
+      
+      ::
+       
+         .. directive-name:: 
+            :option: after 3 whitespace the colon ``:``start
+   
+            directive content starts after 3 whitespace relative to 
+            the first point markup  ``.`` of the ``.. directive-name`` 
+            unless it's  a block literal like ``.. code-block::`` which is 
+            whitespace sensitive.
+
+   **For Blocks other than directives or literals or line blocks**:
+
+   3. The body of text should align with the first line.
+      Subsequent lines should align with the first line.
+      
+   #. Use 2 whitespace for indented text and character markup like ``+``,
+      ``*``, etc.. as in bullet list , etc.. and keep the 
+      body content aligned.
+
+   Examples
+   
+   +---------------------------------------------------------------+---------------------------------------------------------------+
+   | Raw Text                                                      | Rendered As                                                   |
+   +===============================================================+===============================================================+
+   | ::                                                            |                                                               |
+   |                                                               |                                                               |
+   |    This is an example multi-line paragraph.                   |    This is an example multi-line paragraph.                   |
+   |    This line is in the raw text start at 2nd line and         |    This line is in the raw text start at 2nd line and         | 
+   |    span over the 3rd line.                                    |    span over the 3rd line.                                    |                   
+   |                                                               |                                                               |
+   |    * A bullet start here and the ``*`` markup align with      |    * A bullet start here and the ``*`` markup align with      |                                                 
+   |      the previous paragraph.                                  |      the previous paragraph.                                  |                      
+   |                                                               |                                                               |
+   |    * This is a 2nd bullet item                                |    * This is a 2nd bullet item                                |                        
+   |                                                               |                                                               | 
+   |      * This nested item character markup ``*`` align with the |      * This nested item character markup ``*`` align with the |                                                       
+   |        text of the first letter of the parent bullet text.    |        text of the first letter of the parent bullet text.    |                                              
+   |                                                               |                                                               |
+   +---------------------------------------------------------------+---------------------------------------------------------------+
+   
+   The next example show the difference when the text and content 
+   is somewhat malformed. 
+
+   +---------------------------------------------------------------+---------------------------------------------------------------+
+   | Raw Text                                                      | Rendered as                                                   |
+   +===============================================================+===============================================================+
+   | ::                                                            |                                                               |
+   |                                                               |                                                               |
+   |    This is an example multi-line paragraph.                   |    This is an example multi-line paragraph.                   |
+   |    This line is in the raw text start at 2nd line and         |    This line is in the raw text start at 2nd line and         |
+   |    span over the 3rd line.                                    |    span over the 3rd line.                                    |
+   |                                                               |                                                               |
+   |    * A bullet start here and the ``*`` markup align with      |    * A bullet start here and the ``*`` markup align with      |
+   |      the previous paragraph.                                  |      the previous paragraph.                                  |
+   |                                                               |                                                               |
+   |    * This is a 2nd bullet item (top/parent)                   |    * This is a 2nd bullet item (top/parent)                   |
+   |                                                               |                                                               |
+   |        * This nested item character markup ``*`` does NOT     |        * This nested item character markup ``*`` does NOT     |
+   |           align with the parent bullet element, nor do        |           align with the parent bullet element, nor do        |
+   |           subsequent line align with the first line           |           subsequent line align with the first line           |
+   |            of this list.                                      |            of this list.                                      |
+   |        * Instead the nested bullet are indented using 4       |        * Instead the nested bullet are indented using 4       |
+   |          whitespace relative to the parent bullet             |          whitespace relative to the parent bullet             |
+   |          character markup ``*``                               |          character markup ``*``                               |
+   |                                                               |                                                               |
+   +---------------------------------------------------------------+---------------------------------------------------------------+
+
+5. Stay consistent 
+
+.. _important-notice-with-indentation-SectionEnd:
+
+Lists 
+*******
+
+Bulleted List 
+===============
+
+You can also create an unordered list using ``-``, ``*`` or ``+`` for 
+bullet points:
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   - hey, i'm a bullet point.                       |   - hey, i'm a bullet point.                       | 
+|   - another bullet point.                          |   - another bullet point.                          |  
+|                                                    |                                                    |
+|     - Use an empty line + indentation (3           |     - Use an empty line + indentation (3           |                                           
+|       or 4 spaces) for sub element. Whilst         |       or 4 spaces) for sub element. Whilst         |                                        
+|       editing the paragraph if it spans over       |       editing the paragraph if it spans over       |                                              
+|       2 or more lines, keep the text aligned       |       2 or more lines, keep the text aligned       |                                              
+|       and properly indented.                       |       and properly indented.                       |                             
+|     - Another sub-item. No blank line needed       |     - Another sub-item. No blank line needed       |                                              
+|       beforehand but you can add one if you        |       beforehand but you can add one if you        |                                             
+|       would like.                                  |       would like.                                  |                  
+|                                                    |                                                    |    
+|   - Keep an blank line in between top element      |   - Keep an blank line in between top element      |                                             
+|     and sub-elements.                              |     and sub-elements.                              |
+|                                                    |                                                    |
+|                                                    |                                                    | 
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   + a bullet point using the ``+`` syntax          |   + a bullet point using the ``+`` syntax          |
+|                                                    |                                                    |  
+|   * another bullet point using the ``*`` syntax.   |   * another bullet point using the ``*`` syntax.   |
+|     When mixing syntax, keep a blank line in       |     When mixing syntax, keep a blank line in       |
+|     between to avoid warning.                      |     between to avoid warning.                      |
+|                                                    |                                                    |
+|   - another bullet point using ``-``               |   - another bullet point using ``-``               |
+|                                                    |                                                    |
+|                                                    |                                                    |              
+|                                                    |                                                    |   
++----------------------------------------------------+----------------------------------------------------+
+
+
+Numbered/Enumerated List 
+========================
+
+You can also create enumerated list using the following syntax pattern:
+
+* A number followed immediately by a period (``.``) with no space. 
+
+  * You can also use roman numerals followed by ``.``. 
+
+* You can also use capital letters or lower case letters
+
+* ``#.`` syntax can help with auto-numbering
+
+  * Usually this will start at 1, but you can also specify the number at 
+    which the list should start.
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+|::                                                  |                                                    |
+|                                                    |                                                    |    
+|   **Ordered list**                                 |**Ordered list**                                    |                    
+|                                                    |                                                    | 
+|   1. item 1 in the list                            |1. item 1 in the list                               |   
+|   2. item 2                                        |2. item 2                                           |               
+|   #. use ``#.`` for auto-numbering                 |#. use ``#.`` for auto-numbering                    |                                      
+|                                                    |                                                    |     
+|   You can also specify the number at which         |You can also specify the number at which            |                                              
+|   the list should start                            |the list should start                               |                           
+|                                                    |                                                    | 
+|   10. Item 10                                      |10. Item 10                                         |                 
+|   #. Item 11                                       |#. Item 11                                          |                
+|   #. so on and so forth                            |#. so on and so forth                               |                          
+|                                                    |                                                    |      
+|   You can also have nested list                    |You can also have nested list                       |                                    
+|                                                    |                                                    |                                  
+|   1. Item 1                                        |1. Item 1                                           |                
+|                                                    |                                                    |      
+|      I. Item one using ``I.`` roman numerals       |   I. Item one using ``I.`` roman numerals          |                                                  
+|      #. Roman numeral item number ``II.``          |   #. Roman numeral item number ``II.``             |                                               
+|      #. So on and so forth                         |   #. So on and so forth                            |                                
+|                                                    |                                                    |
+|   #. Item 2                                        |#. Item 2                                           |                                                                        
+|                                                    |                                                    |     
+|      A. Another sub list. First item using         |   A. Another sub list. First item using            |                                                                                                              
+|         ``A.`` as a capital letter for             |      ``A.`` as a capital letter for                |                                                                                              
+|         ordering.                                  |      ordering.                                     |                            
+|      #. Sub list, 2nd item (auto numbering)        |   #. Sub list, 2nd item (auto numbering)           |                                                                                                        
+|                                                    |                                                    |         
+|   #. Item 3                                        |#. Item 3                                           |                                                                        
+|                                                    |                                                    |     
+|      a. Another sub list , using lower case        |   a. Another sub list , using lower case           |
+|         letter                                     |      letter                                        |                                                                                                                
+|      #. Item b                                     |   #. Item b                                        |                                                                            
+|                                                    |                                                    |                                                              
+|   #. Item 4                                        |#. Item 4                                           |                                                                        
+|                                                    |                                                    |     
+|      1. using sub nested item                      |   1. using sub nested item                         |                                                                                      
+|      #. item 2                                     |   #. item 2                                        |                                                                            
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+|::                                                  |                                                    |
+|                                                    |                                                    |
+|   **Ordered list**                                 |**Ordered list**                                    |
+|                                                    |                                                    |
+|   (A) item 1 in the list                           |(A) item 1 in the list                              |
+|   (B) item 2                                       |(B) item 2                                          |
+|   (#) use ``#.`` for auto-numbering                |(#) use ``#.`` for auto-numbering                   |
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+
+**Mixing List**
+
+You can also mix bulleted list and enumerated list.
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+|::                                                  |                                                    |
+|                                                    |                                                    |                                                                                                                                          
+|   1. An ordered list as top level element          |1. An ordered list as top level element             |                                                                                                                                                                                 
+|                                                    |                                                    |                                                                                                                                                  
+|      * a bullet point                              |   * a bullet point                                 |                                                                                                                                                                    
+|                                                    |                                                    |
+|        * another bullet point                      |     * another bullet point                         |                                                                                                                                                                              
+|                                                    |                                                    |                                                                                          
+|                                                    |                                                    |                                                                                                                                                   
+|   * A bullet point as top level element            |* A bullet point as top level element               |                                                                                                                                                                                         
+|                                                    |                                                    |                                                                                      
+|     1. a list of sub element                       |  1. a list of sub element                          |                                                                                                                                                                                
+|     #. another list element                        |  #. another list element                           |                                                                                                                     
+|                                                    |                                                    |                                                        
+|        | ...                                       |     | ...                                          |                                                                                                   
+|                                                    |                                                    | 
+|     5. jump to item 5                              |  5. jump to item 5                                 |                                                                                   
+|                                                    |                                                    |                                                          
+|                                                    |                                                    |                                                          
++----------------------------------------------------+----------------------------------------------------+
+
+Field List
+============
+
+Field lists 
+
+* are used as part of an extension syntax, such as options for directives, 
+  or database-like records meant for further processing. [1]_
+* are used to define a field name and its corresponding value.
+
+Syntax::
+
+    :fieldname: Field content/value
+
+* the ``fieldname`` can be any string of characters, but it must not contain a colon in 
+  the name.
+
+  * There are some predefined field names such as ``:Address:``, 
+    ``:Date:``, ``:Author:``, ``Authors:``, etch that are recognized by the parser. 
+  
+  * The rendering of the field list is determined by the document theme.
+
+* The value can be a phrase or multi-line block of text
+
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| **Raw Text**                                                                    | **Rendered as**                                                                 |
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| ::                                                                              |                                                                                 |
+|                                                                                 |                                                                                 |
+|    :Address: 123  Acme Ave, Suite 200                                           |    :Address: 123  Acme Ave, Suite 200                                           |
+|              Saint Paul, MN                                                     |              Saint Paul, MN                                                     |
+|                                                                                 |                                                                                 |
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+| ::                                                                              |                                                                                 |                                                                                     
+|                                                                                 |                                                                                 |
+|   :Date: 2001-08-16                                                             |   :Date: 2001-08-16                                                             | 
+|   :Version: 1                                                                   |   :Version: 1                                                                   |                  
+|   :Authors: - Me                                                                |   :Authors: - Me                                                                |                     
+|             - Myself                                                            |             - Myself                                                            |                         
+|             - I                                                                 |             - I                                                                 |                    
+|   :Indentation: Since the field marker may be quite long, the second            |   :Indentation: Since the field marker may be quite long, the second            |                                                                         
+|      and subsequent lines of the field body do not have to line up              |      and subsequent lines of the field body do not have to line up              |                                                                       
+|      with the first line, but they must be indented relative to the             |      with the first line, but they must be indented relative to the             |                                                                        
+|      field name marker, and they must line up with each other.                  |      field name marker, and they must line up with each other.                  |                                                                   
+|   :Parameter i: integer                                                         |   :Parameter i: integer                                                         |                            
+|                                                                                 |                                                                                 | 
++---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+
+Option List 
+=============
+
++----------------------------------------------------------+------------------------------------------------------+
+| Raw Text                                                 | Rendered as                                          |
++==========================================================+======================================================+
+| ::                                                       |                                                      |
+|                                                          |                                                      |
+|    -a            command-line option "a"                 |    -a            command-line option "a"             |
+|    -b file       options can have arguments              |    -b file       options can have arguments          |
+|                  and long descriptions                   |                  and long descriptions               |
+|    --long        options can be long also                |    --long        options can be long also            |
+|    --input=file  long options can also have              |    --input=file  long options can also have          |
+|                  arguments                               |                  arguments                           |
+|    /V            DOS/VMS-style options too               |    /V            DOS/VMS-style options too           |
++----------------------------------------------------------+------------------------------------------------------+
+
+Definition List
+===============
+
++----------------------------------------------------------+------------------------------------------------------+
+| Raw Text                                                 | Rendered as                                          |
++==========================================================+======================================================+
+| ::                                                       |                                                      |
+|                                                          |                                                      |
+|    what                                                  |    what                                              |
+|      Definition lists associate a term with              |      Definition lists associate a term with          |
+|      a definition.                                       |      a definition.                                   |
+|                                                          |                                                      |
+|    how                                                   |    how                                               |
+|      The term is a one-line phrase, and the              |      The term is a one-line phrase, and the          |
+|      definition is one or more paragraphs or             |      definition is one or more paragraphs or         |
+|      body elements, indented relative to the             |      body elements, indented relative to the         |
+|      term. Blank lines are not allowed                   |      term. Blank lines are not allowed               |
+|      between term and definition.                        |      between term and definition.                    |
++----------------------------------------------------------+------------------------------------------------------+
+
+
+Directives and Roles
+*********************
+
+**Directives** and **roles** are syntactic constructions that can add new features 
+to the reStructuredText language by interpreting a chuck of text as a specific 
+type of markup according to the name of the directive or role.
+
+Role 
+======
+
+A **role** 
+
+* is a type of inline markup that can be applied to text in the document.
+* is an inline piece of explicit markup
+* Syntax: ``:role-name:`interpreted text``` or ```interpreted text`:role-name:``
+
+  * The *role name* is a either a user-defined name or a built-in predefined name 
+    used by the parser. The role name is in between the colons ``:``
+  * The *interpreted text* is the text that will be rendered according to the role 
+    and is enclosed in backticks `````.
+
+Example of docutils predefined roles
+
+* ``:subscript:`` role 
+* ``:superscript:`` role
+* ``:math:`` role 
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|    H :subscript:`2` O                              |    H :subscript:`2` O                              |
+|                                                    |                                                    |
+|    LaT :sub:`E`\X                                  |    LaT :sub:`E`\X                                  |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   Ca :superscript:`+2`                             |   Ca :superscript:`+2`                             |
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   :math:`\sqrt{3x-1}+(1+x)^2`                      |   :math:`\sqrt{3x-1}+(1+x)^2`                      |
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+
+
+Directives 
+===========
+
+**Directives**
+
+- are a type of **block-level markup** that can be applied to a block of text in the document.
+    
+  - A block markup is a text block
+      
+    - whose first line begins with ``..`` followed by whitespace
+    - whose second and subsequent lines are indented relative to the first line.
+    - and which ends before an unindented line.
+  
+  - useful for constructs that need special handling
+
+  .. note:: There needs to be a blank line between explicit markup (like directives) and 
+     normal paragraphs. The parser might not rendered it correctly or spew out 
+     warnings.
+
+- directive Syntax:: 
+    
+   .. directive-name:: <required or optional argument>
+      :option-name1: value
+      :option-name2: value
+      :option-nameN: value 
+
+      directive content/body goes here.
+      Subsequent lines stay indented
+
+- Examples of directives: 
+    
+  * Admonitions: ``.. note::``, generic ``.. admonition::``, ``.. warning::``, 
+    ``.. tip::``, ``hint``, ``danger``, etc...
+  * Images: ``.. image::``, ``.. figure::``
+  * Tables: ``.. table::``, ``.. csv-table::``, ``.. list-table::``
+  * Code blocks: ``.. code::``
+  * Special characters: ``.. unicode::``
+  * Roles: ``.. role::``
+  * Content inclusion: ``.. include::``, ``.. raw::`` (ex: ``.. raw:: html``,
+    ``.. raw:: latex``, ``.. raw:: pdf``)
+
+  * Substitution definitions: 
+      
+    * ``.. |substitution| replace::``
+    * ``.. |substitution| image::``
+    * ``.. |substitution| unicode::``
+  
+  * Meta data: ``.. meta::``
+  * Table of contents: ``.. contents::``
+  * Custom directives:  *.. user-directive-name::*
+  * etc...
+
+Images Inclusion 
+******************
+
+You can include images in your document using the ``.. image::`` directive.
+or ``.. figure::`` directive.
+
+* Syntax examples::
+
+    .. image:: <relative-path-to-image-file> or <url>
+        :width: <100px, 100%, 100em>
+        :height: <100px, 100%, 100em>
+        :scale: <50px, 50%, 50em>
+        :align: <left, center, right>
+        :alt: alternative text
+        :target: _blank or an url to create clickable image
+
+
+    .. figure:: <relative-path-to-image-file> or <url>
+        :width: <100px, 100%, 100em>
+        :height: <100px, 100%, 100em>
+        :scale: 50
+        :align: <left, center, right>
+        :alt: alternative text
+        :target: _blank or an url to create clickable image
+
+        Optional caption text goes here.
+
+* The **options** are optional and can be omitted.
+
++----------------------------------------------------+-------------------------------------------------------------------------------------+
+| Raw Text                                           | Rendered As                                                                         |
++====================================================+=====================================================================================+
+| ::                                                 |                                                                                     |
+|                                                    |                                                                                     |
+|   .. image:: ../../_images/vexel-BD-wish.svg       |   .. image:: ../../_images/vexel-BD-wish.svg                                        |
+|      :target: https://shorturl.at/tAS3d            |      :target: https://www.freeimages.com/vector/birthday-wishes-png-design-5690251  |
+|      :alt: a clickable image                       |      :alt: a clickable image                                                        |
+|                                                    |                                                                                     |
++----------------------------------------------------+-------------------------------------------------------------------------------------+
+
+**Figure Example**: 
+
+::
+
+   .. figure:: ../../_images/vexel-BD-wish.svg               
+       :width: 300px
+       :height: 200px
+       :align: left
+       :alt: Happy BD
+       
+       Credit: Image by freeimages.com
+
+
+Rendered as 
+                                     
+.. figure:: ../../_images/vexel-BD-wish.svg               
+    :width: 400px
+    :height: 300px
+    :align: left
+    :alt: Happy BD
+    
+    Credit: Image by freeimages.com
+
+
+**Image Inclusion via URL**
+
++----------------------------------------------------------------+----------------------------------------------------------------+
+| Raw Text                                                       | Rendered as                                                    |
++================================================================+================================================================+
+|::                                                              |                                                                |              
+|                                                                |                                                                |              
+|   .. image:: https://images.unsplash.com/25/puppy-love.jpg     |   .. image:: https://images.unsplash.com/25/puppy-love.jpg     |
+|      :alt: dog                                                 |      :alt: dog                                                 |
+|                                                                |                                                                |              
+|                                                                |                                                                |              
++----------------------------------------------------------------+----------------------------------------------------------------+
+
+Tables [1]_ 
+*************
+
+Using these specials characters ``+``, ``=``, ``|``  you can create/draw table in 
+restructuredtext. There are two syntaxes for tables in reStructuredText. 
+
+1. **Grid tables**- which are complete but cumbersome to create. 
+2. **Simple tables** are easy to create but limited (no row spans, etc.).
+
+You can use directives like ``.. csv-table::`` or ``.. list-table::`` to create
+easy to managed tables.
+
+Grid Tables
+=============
+
+With grid tables, you can have nested tables and granular control on how 
+the table can be drawn.
+
+.. hint:: I have been using grid tables throughout this document.
+
++---------------------------------------------------------------+--------------------------------------------------------------+
+| **Raw Text**                                                  | **Rendered As**                                              |
++---------------------------------------------------------------+--------------------------------------------------------------+
+| ::                                                            |                                                              |                          
+|                                                               |                                                              |                          
+|    +--------------------------------+                         |   +--------------------------------+                         | 
+|    | Raw Text                       |                         |   | Raw Text                       |                         | 
+|    +--------------------------------+                         |   +--------------------------------+                         | 
+|    | ::                             |                         |   | ::                             |                         | 
+|    |                                |                         |   |                                |                         |     
+|    |   ``M o n o s p a c e``        |                         |   |   ``M o n o s p a c e``        |                         | 
+|    |                                |                         |   |                                |                         | 
+|    |                                |                         |   |                                |                         | 
+|    +--------------------------------+                         |   +--------------------------------+                         | 
+|                                                               |                                                              |
++---------------------------------------------------------------+--------------------------------------------------------------+
+
+++ **Grid table which span rows, columns and which includes header row**
+
++---------------------------------------------------------------+------------------------------------------------------+
+| **Raw Text**                                                  | **Rendered as**                                      |
++---------------------------------------------------------------+------------------------------------------------------+
+| ::                                                            |                                                      |
+|                                                               |                                                      |
+|                                                               |                                                      |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
+|   | Header 1   | Header 2   | Header 3  |                     |   | Header 1   | Header 2   | Header 3  |            |
+|   +============+============+===========+                     |   +============+============+===========+            |
+|   | body row 1 | column 2   | column 3  |                     |   | body row 1 | column 2   | column 3  |            |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
+|   | body row 2 | Cells may span columns.|                     |   | body row 2 | Cells may span columns.|            |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
+|   | body row 3 | Cells may  | - Cells   |                     |   | body row 3 | Cells may  | - Cells   |            |
+|   +------------+ span rows. | - contain |                     |   +------------+ span rows. | - contain |            |
+|   | body row 4 |            | - blocks. |                     |   | body row 4 |            | - blocks. |            |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
++---------------------------------------------------------------+------------------------------------------------------+
+
+Simple Table 
+=============
+
++---------------------------------------------------------------+------------------------------------------------------+
+| **Raw Text**                                                  | **Rendered as**                                      |
++---------------------------------------------------------------+------------------------------------------------------+
+| ::                                                            |                                                      |
+|                                                               |                                                      |
+|                                                               |                                                      |
+|   =====  =====  ======                                        |   =====  =====  ======                               |
+|      Inputs     Output                                        |      Inputs     Output                               |
+|   ------------  ------                                        |   ------------  ------                               |
+|     A      B    A or B                                        |     A      B    A or B                               |
+|   =====  =====  ======                                        |   =====  =====  ======                               |
+|   False  False  False                                         |   False  False  False                                |
+|   True   False  True                                          |   True   False  True                                 |
+|   False  True   True                                          |   False  True   True                                 |
+|   True   True   True                                          |   True   True   True                                 |
+|   =====  =====  ======                                        |   =====  =====  ======                               |
++---------------------------------------------------------------+------------------------------------------------------+
+
+
+.. Tip::
+
+   To start a new row in a simple table without text in the first
+   column in the processed output, use one of these:
+
+   * an empty comment (``..``), which may be omitted from the processed
+     output
+
+   * a backslash escape followed by a space
+     (:literal:`\\ \ `)
+
+The following example illustrates continuation lines (row 2 consists
+of two lines of text, and four lines for row 3), a blank line
+separating paragraphs (row 3, column 2), text extending past the right
+edge of the table, and a new row which will have no text in the first
+column in the processed output (row 4)
+
++---------------------------------------------------------------+---------------------------------------------------------------+
+| Raw Text                                                      | Rendered As                                                   |
++===============================================================+===============================================================+
+| ::                                                            |                                                               |
+|                                                               |                                                               |                                                                          
+|     =====  =====                                              |     =====  =====                                              |                            
+|     col 1  col 2                                              |     col 1  col 2                                              |                            
+|     =====  =====                                              |     =====  =====                                              |                            
+|     1      Second column of row 1.                            |     1      Second column of row 1.                            |                                              
+|     2      Second column of row 2.                            |     2      Second column of row 2.                            |                                              
+|            Second line of paragraph.                          |            Second line of paragraph.                          |                                                
+|     3      - Second column of row 3.                          |     3      - Second column of row 3.                          |                                                
+|                                                               |                                                               |            
+|            - Second item in bullet                            |            - Second item in bullet                            |                                              
+|              list (row 3, column 2).                          |              list (row 3, column 2).                          |                                                
+|     \      Row 4; column 1 will be empty.                     |     \      Row 4; column 1 will be empty.                     |                                                     
+|     =====  =====                                              |     =====  =====                                              |                            
+|                                                               |                                                               |
+|                                                               |                                                               |
++---------------------------------------------------------------+---------------------------------------------------------------+
+
+CSV Table 
+===========
+
+.. warning:: The "csv-table" directive's *file* and *url*  options represent
+    potential security holes.  They can be disabled with the
+    ``file_insertion_enabled`` docutils runtime setting.
+
+
+**Syntax**::
+
+    .. csv-table:: Table Title
+       :file: CSV file path and name
+       :widths: 30, 70
+       :header-rows: 1
+
+.. tip:: for more information on the "csv-table" directive and the options 
+    it supports, visit `docutils csv-table documentation <https://docutils.sourceforge.io/docs/ref/rst/directives.html#csv-table-1>`_
+
+**Example**
+
++---------------------------------------------------------------+---------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                   |
++===============================================================+===============================================================+
+| ::                                                            |                                                               |   
+|                                                               |                                                               |
+|     .. csv-table:: Frozen Delights!                           |     .. csv-table:: Frozen Delights!                           |                                    
+|        :header: "Treat", "Quantity", "Description"            |        :header: "Treat", "Quantity", "Description"            |                                                   
+|        :widths: 15, 10, 30                                    |        :widths: 15, 10, 30                                    |                           
+|                                                               |                                                               | 
+|        "Albatross", 2.99, "On a stick!"                       |        "Albatross", 2.99, "On a stick!"                       |                                        
+|        "Crunchy Frog", 1.49, "If we took the bones out,       |        "Crunchy Frog", 1.49, "If we took the bones out,       |                                                        
+|        it wouldn't be crunchy, now would it?"                 |        it wouldn't be crunchy, now would it?"                 |                                              
+|        "Gannet Ripple", 1.99, "On a stick!"                   |        "Gannet Ripple", 1.99, "On a stick!"                   |                                            
+|                                                               |                                                               |
++---------------------------------------------------------------+---------------------------------------------------------------+
+
+.. note:: Within the CSV file, you can use RST markup just as you would if writing 
+    in directly in the RST file.
+
+    Make sure the parameters match the content of the CSV file.
+
+List Table Directive
+=====================
+
++--------------------------------------+--------------------------------------+
+| Raw Text                             | Rendered Text                        |
++======================================+======================================+
+| ::                                   |                                      |       
+|                                      |                                      |    
+|   .. list-table:: Title              |   .. list-table:: Title              |                            
+|      :widths: 10 15 20               |      :widths: 10 15 20               |                           
+|      :header-rows: 1                 |      :header-rows: 1                 |                         
+|                                      |                                      |
+|      * - Heading row 1, column 1     |      * - Heading row 1, column 1     |                                     
+|        - Heading row 1, column 2     |        - Heading row 1, column 2     |                                   
+|        - Heading row 1, column 3     |        - Heading row 1, column 3     |                                   
+|      * - Row 1, column 1             |      * - Row 1, column 1             | 
+|        -                             |        -                             |           
+|        - Row 1, column 3             |        - Row 1, column 3             |                           
+|      * - Row 2, column 1             |      * - Row 2, column 1             |                           
+|        - Row 2, column 2             |        - Row 2, column 2             |     
+|        - Row 2, column 3             |        - Row 2, column 3             |                           
+|                                      |                                      |          
+|                                      |                                      |     
++--------------------------------------+--------------------------------------+
+
+Code Block & Syntax Highlighting
+**********************************
+
+The ``code`` directive is used to display block of code 
+in your documentation. Through pygments, syntax highlighting is available
+for multiple programming languages.
+
+* Syntax::
+
+    .. code:: <language>
+       :option: value
+
+       <your code here>
+    
+* ``<language>``:  The programming language for syntax highlighting 
+  (e.g., python, bash, console javascript, C, C++, json, etc...).
+ 
+* ``:option: value`` : Optional settings like ``number-lines`` for line numbers, 
+
+.. note:: To have more formatting and options like line numbers, line highlighting, 
+    etc... you can use the Sphinx ``code-block`` directive. The ``code-block`` directive 
+    is more flexible and powerful than the ``code`` directive.
+
+    * Syntax::
+
+        .. code-block:: <language>
+           :option: value
+
+           <your code here>
+
+    * ``<language>``: The programming language for syntax highlighting 
+      (e.g., python, bash, console javascript, C, C++, json, etc...).
+ 
+    * ``:option: value`` : Optional settings like ``linenos`` for line numbers,
+      ``emphasize-lines`` for highlighting lines, ``lineno-start`` to specify the 
+      starting line number for the code being displayed.
+
+.. note:: By default, code blocks will use python syntax highlighting.
+
++----------------------------------------------------+----------------------------------------------------+
+| Raw Text                                           | Rendered as                                        |
++====================================================+====================================================+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|    .. code:: python                                |    .. code:: python                                | 
+|                                                    |                                                    |
+|        def greet(name):                            |        def greet(name):                            |
+|            print(f"Hello, {name}!")                |            print(f"Hello, {name}!")                | 
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    | 
+|                                                    |                                                    |
+|   .. code:: C                                      |   .. code:: C                                      |                         
+|      :number-lines:                                |      :number-lines:                                |
+|                                                    |                                                    |       
+|       #include <stdio.h>                           |       #include <stdio.h>                           |                             
+|                                                    |                                                    | 
+|       // Function to greet a user by name          |       // Function to greet a user by name          |                                              
+|       void greet(const char *name) {               |       void greet(const char *name) {               |                                         
+|           printf("Hello, %s!\n", name);            |           printf("Hello, %s!\n", name);            |                                            
+|       }                                            |       }                                            |            
+|                                                    |                                                    |       
++----------------------------------------------------+----------------------------------------------------+
+
+
+Hyperlinks, Cross-Referencing (Document Linkage) 
+*************************************************
+
+External Hyperlinks
+====================
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                 |
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   External hyperlinks, like Python_.                          |   External hyperlinks, like Python_.                        |
+|                                                               |                                                             |
+|   .. _Python: http://www.python.org/                          |   .. _Python: http://www.python.org/                        |
++---------------------------------------------------------------+-------------------------------------------------------------+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   External hyperlinks, like `Python                           |   External hyperlinks, like `Python                         |
+|   <http://www.python.org/>`_.                                 |   <http://www.python.org/>`_.                               |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+Indirect Hyperlinks and Anonymous Hyperlinks
+=============================================
+
+The second hyperlink target (the line beginning with "__") is both an indirect hyperlink target 
+(indirectly pointing at the Python website via the ``Python_`` reference) and an anonymous 
+hyperlink target. In the text, a double-underscore suffix is used to indicate an anonymous 
+hyperlink reference. In an anonymous hyperlink target, the reference text is not repeated. 
+This is useful for references with long text or throw-away references, 
+but the target should be kept close to the reference to prevent 
+them going out of sync.
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                 |
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Python_ is `my favourite                                    |   Python_ is `my favourite                                  |
+|   programming language`__.                                    |   programming language`__.                                  |
+|                                                               |                                                             |
+|   .. _Python: http://www.python.org/                          |   .. _Python: http://www.python.org/                        |
+|                                                               |                                                             |
+|   __ Python_                                                  |   __ Python_                                                |
+|                                                               |                                                             |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+Internal Hyperlinks (Cross-References)
+======================================
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                 |
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Internal cross-references, like example_.                   |   Internal cross-references, like example_.                 |
+|                                                               |                                                             |
+|   .. _example:                                                |   .. _example:                                              |
+|                                                               |                                                             |
+|   This is an example cross-reference target.                  |   This is an example cross-reference target.                |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+Implicit Hyperlinks Targets
+============================
+
+You can also reference a section or subsection by using the section title as the reference.
+
++---------------------------------------------------------------+---------------------------------------------------------------+
+| Raw Text                                                      | Raw Text                                                      | 
++===============================================================+===============================================================+
+| ::                                                            |                                                               |            
+|                                                               |                                                               |
+|     Implicit reference that allows you to jump to             |     Implicit reference that allows you to jump to             |                                                            
+|     `Internal Hyperlinks (Cross-References)`_                 |     `Internal Hyperlinks (Cross-References)`_                 |                                                       
+|                                                               |                                                               |          
+|                                                               |                                                               |          
++---------------------------------------------------------------+---------------------------------------------------------------+
+
+.. note:: Reference/target label must be unique within the document. To reference to label 
+    that lives in another document, you will have use the sphinx project 
+    built-in ``:ref:`` role. Docutils rst does not support this.
+
+Footnotes, Citations, and Bibliography 
+***************************************
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Raw Text                                                    | 
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Footnote references, like [5]_.                             |   Footnote references, like [5]_.                           |
+|   Note that footnotes may get                                 |   Note that footnotes may get                               |
+|   rearranged, e.g., to the bottom of                          |   rearranged, e.g., to the bottom of                        |
+|   the "page".                                                 |   the "page".                                               |
+|                                                               |                                                             |
+|   .. [5] A numerical footnote. Note                           |   .. [5] A numerical footnote. Note                         |
+|      there's no colon after the ``]``.                        |      there's no colon after the ``]``.                      |
++---------------------------------------------------------------+-------------------------------------------------------------+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Autonumbered footnotes are                                  |   Autonumbered footnotes are                                |
+|   possible, like using [#]_ and [#]_.                         |   possible, like using [#]_ and [#]_.                       |
+|                                                               |                                                             |
+|   .. [#] This is the first one.                               |   .. [#] This is the first one.                             |
+|   .. [#] This is the second one.                              |   .. [#] This is the second one.                            |
+|                                                               |                                                             |
+|   They may be assigned 'autonumber                            |   They may be assigned 'autonumber                          |
+|   labels' - for instance,                                     |   labels' - for instance,                                   |
+|   [#fourth]_ and [#third]_.                                   |   [#fourth]_ and [#third]_.                                 |
+|                                                               |                                                             |
+|   .. [#third] a.k.a. third_                                   |   .. [#third] a.k.a. third_                                 |
+|                                                               |                                                             |
+|   .. [#fourth] a.k.a. fourth_                                 |   .. [#fourth] a.k.a. fourth_                               |
++---------------------------------------------------------------+-------------------------------------------------------------+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Auto-symbol footnotes are also                              |   Auto-symbol footnotes are also                            |
+|   possible, like this: [*]_ and [*]_.                         |   possible, like this: [*]_ and [*]_.                       |
+|                                                               |                                                             |
+|   .. [*] This is the first one.                               |   .. [*] This is the first one.                             |
+|   .. [*] This is the second one.                              |   .. [*] This is the second one.                            |
++---------------------------------------------------------------+-------------------------------------------------------------+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Citation references, like [CIT2002]_.                       |   Citation references, like [CIT2002]_.                     |
+|   Note that citations may get                                 |   Note that citations may get                               |
+|   rearranged, e.g., to the bottom of                          |   rearranged, e.g., to the bottom of                        |
+|   the "page".                                                 |   the "page".                                               |
+|                                                               |                                                             |
+|   .. [CIT2002] A citation                                     |   .. [CIT2002] A citation                                   |
+|      (as often used in journals).                             |      (as often used in journals).                           |
+|                                                               |                                                             |
+|   Citation labels contain alphanumerics,                      |   Citation labels contain alphanumerics,                    |
+|   underlines, hyphens and fullstops.                          |   underlines, hyphens and fullstops.                        |
+|   Case is not significant.                                    |   Case is not significant.                                  |
+|                                                               |                                                             |
+|   Given a citation like [this]_, one                          |   Given a citation like [this]_, one                        |
+|   can also refer to it like this_.                            |   can also refer to it like this_.                          |
+|                                                               |                                                             |
+|   .. [this] here.                                             |   .. [this] here.                                           |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+With reStructuredText, to create a bibliographical reference
+the common practice is to create citation definitions in a file say *bibliography.rst*
+and then include it in the main document using the ``.. include::`` directive.
+
+* Whenever you want to cite a reference, you can simply use citation reference like 
+  ``[UniqueCitationID1]_``.
+
+
+.. code:: rst 
+    
+    .. rubric:: Bibliography 
+    
+    .. [UniqueCitationID1] Start of my bibliographical content
+
+.. tip:: for footnotes, bibliography it is common practice to use the ``.. rubric`` 
+    directive before writing the footnote or citation definitions.
+    
+    * rubric: indicate a heading without relation to the document sectioning.
+
+        * it is usually separated by blank lines as shown previously.
+
+
+Alternatively, if you are using rST with a `Sphinx`_ project, you can use the ``.. bibliography::`` directive
+provided by ``sphinxcontrib-bibtex`` extension.
+
+
+🎯Bonus: Tips for Writing reST Documents
+*****************************************
+
+✅ **Use consistent heading styles** throughout the document. 
+
+✅ **Indent lists and blocks properly**— whitespace is important in reST!
+
+✅ **Use cross-references** (``.. _label:``) to link between sections easily. 
+
+✅ **Use python Sphinx project + extensions** for advanced features like LaTeX math, diagrams, 
+or API documentation to generate beautiful documentation and produce different output formats.
+
+Conclusion
+**********
+
+At a high level, you can think of reStructuredText as having 3 types of syntax:
+
+* Character markup 
+    
+  - ``+``, ``*``, ``|``, ``=``, ``#`` ``.`` as in bullet points, lists, 
+    and tables, sections title
+
+  - Whitespaces ( Indentation, page break, etc...) + blank lines
+
+* Inline markup
+
+  - Inline markup allows words and phrases within text to have character styles 
+    like italics and boldface) and functionality (like hyperlinks).
+    See more by checking out `Text Formatting`_ section.
+
+* and block markup (explicit markup)
+
+  - A block markup is a text block
+      
+    - whose first line begins with ``..`` followed by whitespace
+    - whose second and subsequent lines are indented relative to the first line.
+    - and which ends before an unindented line.
+    
+      - useful for constructs that need special handling
+
+    .. note:: There needs to be a blank line between explicit markup and 
+       normal paragraphs
+    
+    * Examples of block markup are comments, directives, and 
+      footnotes, etc...
+
+In conclusion, using only special markup characters and text, 
+one can create a reStructuredText document
+
+- which is made up of body or block-level elements 
+- which may be structured into sections and subsections 
+- and whose markup, block, containers elements may be delineate by blank lines.
+    
+  - Blank lines serve as the delimiter, as an indicator for a transition to next 
+    block interpretation unless the blanks line are part of a literal block or inline 
+    literal, which in these cases the blank lines and whitespace characters 
+    are preserved.
+     
+.. uml:: ../../_images/src/rstMindmap.puml
+   :width: 1080px
+   :scale: 60%
+   :alt: This document structure plantuml diagram
+
+References/Additional Resources
+********************************
+
+.. [1] `reStructuredText Markup Specification`_
+
+.. _reStructuredText Markup Specification: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
