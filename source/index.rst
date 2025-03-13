@@ -252,26 +252,88 @@ Dependencies
 
 **Sphinx project dependencies**
 
-This project require a few dependencies.
+This project requires a few dependencies.
 
 #. python
 #. pip
 #. pipenv
 #. GNU make
+#. java jre
 
-Although some dependencies (python packages) are being kept tracked of via Pipefiles and can be 
-automatically installed, others require some executable to be on the user's build
-machine.
+You can verify if your system met the following requirement by using the following 
+commands on a terminal 
 
-* The **drawio extension** depends on
+.. code-block:: console 
+
+   python --version
+   pip --version
+   pipenv --version
+   make -version
+   java -version
+
+if you don't have them in your host system, please install them first. 
+
+.. note:: Depends on the OS distribution, ex Linux Ubuntu, when you need to 
+   install `pipenv` using ``pip install --user pipenv`` you might get the following 
+   error message 
+
+   .. image:: common/_images/SystemPackageManagerBreak.png 
+      :width: 400px 
+   
+   To get pass this error, then run the command
+   
+   .. code-block:: console 
+      
+      pip install --user --break-system-packages pipenv 
+    
+   After pipenv is installed, you might need to add it to PATH environment 
+   variable. 
+
+   **In Linux, Ubuntu** do the the following steps
+
+   1. Open the ``~/.bashrc`` script file in a text editor. 
+      
+      * Example using vscode 
+        
+        .. code-block:: console 
+           
+           code -n ~/.bashrc
+   
+   #. With the file opened and ready to be modified, add the following at the 
+      end of the file 
+
+      .. code-block:: bash 
+         :caption: ~/.bashrc
+
+         export PATH=$PATH:$HOME/.local/bin
+   
+   #. Save the file and exit. ``Ctrl + S`` for vs code.
+   #. (optional) re-run the .bashrc script on any existing bash terminal you 
+      have open 
+
+      .. code-block:: console
+         :caption: bash terminal
+
+         source ~/.bashrc
+
+Although some dependencies (python packages) are being tracked via Pipefile and can be 
+automatically installed with no extra dependencies, others require some executable 
+to be on the user's build machine.
+
+* The **drawio extension** , use for diagramming, depends on
 
   1. `diagrams.net <https://www.diagrams.net/>`_ executable to be on 
      user's machine.
 
+     * **releases**: https://github.com/jgraph/drawio-desktop/releases
+
 * The **plantuml sphinx extension** depends on a
     
-  * `plantuml.jar` that requires `java -jar` command so you'll need the java
-    `jre <https://www.java.com/en/download/>`_ on your system
+  * ``plantuml.jar`` that requires ``java -jar`` command so you'll need the java
+    runtime environment `jre <https://www.java.com/en/download/>`_ on your system
+
+    * for ubuntu you can follow https://ubuntu.com/tutorials/install-jre#2-installing-openjdk-jre
+      to install it. 
 
     * The sphinx-needs extension documentation has some instructions on how 
       to install plantuml to work with sphinx
