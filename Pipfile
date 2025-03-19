@@ -29,5 +29,6 @@ piccolo-theme = "*"
 
 #useful package
 svglib = "*"
+colorama = "*"
 
 [dev-packages]
