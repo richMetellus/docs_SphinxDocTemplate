@@ -1,13 +1,14 @@
-Journal Entry 
-#################
+Journal Entry - Exploring x As Documentation tools
+####################################################
 
-Date: 
-Last Updated:
+Date: 03/17/2024
+Last Updated: 03/17/2024
 
 Context 
 **********
 
-Explain why this is for 
+Exploring technical documentation tools
+
 
 
 

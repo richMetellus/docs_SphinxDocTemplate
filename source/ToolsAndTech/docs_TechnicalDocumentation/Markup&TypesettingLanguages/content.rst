@@ -1,5 +1,5 @@
-Markup Languages 
-#################
+Markup Languages & Typesetting Languages
+#########################################
 
 Intro 
 ******
@@ -12,7 +12,9 @@ A :term:`markup language`
   and formatting of a document and potentially the relationships among its parts (Wikipedia).
 
   * Example of markup languages: hypertext markup language (.html), markdown (.md), extensible markup 
-    language (.xml), restructured text (.rst), LaTeX (.tex), AsciiDoc
+    language (.xml), restructured text (.rst), AsciiDoc
+
+* focus on structuring and formatting documents, rather than the final visual output. 
 
 The keyword point is that a markup language uses **plain text** and contains no binary 
 information.
@@ -47,6 +49,22 @@ appropriate format.
   .. seealso:: `Sphinx Parser API <https://www.sphinx-doc.org/en/master/extdev/parserapi.html>`_
      `docutils node <https://www.sphinx-doc.org/en/master/development/tutorials/extending_syntax.html#what-are-docutils-nodes>`_
 
+**What is a typesetting language**
+
+:term:`Typesetting` is the process of preparing text and images for publication
+ensuring it is readable and visually appealing.
+
+**Typesetting languages** 
+
+* are systems of instructions used to format and arrange 
+  text for publication, display, or distribution, often involving specifying fonts, 
+  spacing, and other visual elements. 
+  
+  * Examples include **TeX**, **LaTeX**, and **Typst**. 
+
+
+* :doc:`000_List`
+
 Explore Some Markup Languages
 ******************************
 
@@ -57,3 +75,5 @@ Explore Some Markup Languages
 
    RST/content
    Markdown/content
+   000_List
+

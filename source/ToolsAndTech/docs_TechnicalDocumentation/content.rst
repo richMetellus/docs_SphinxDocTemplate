@@ -8,7 +8,7 @@ Markup Languages
    :glob:
    :maxdepth: 3
 
-   MarkupLanguages/content
+   Markup&TypesettingLanguages/content
 
 Documentation Generator 
 *************************
