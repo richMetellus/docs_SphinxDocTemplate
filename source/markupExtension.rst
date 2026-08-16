@@ -1,7 +1,4 @@
 
-.. role:: strike
-   :class: strike
-
 .. |check| raw:: html
 
     <input checked=""  type="checkbox">

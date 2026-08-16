@@ -19,6 +19,8 @@ cwd = os.getcwd() # note this will use the Makefile path
 parent_project_root = os.path.dirname(os.path.abspath(__file__)) 
 sys.path.insert(0, parent_project_root)
 sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.abspath("../../python"))
+
 
 version_file_path = os.path.join(parent_project_root, 'VERSION')
 
@@ -59,8 +61,19 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
     'sphinx_design',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    # Makes the strike/underline/color/mark markup (and the
+    # ~struck through~ shorthand) used by the fast preview extension
+    # also work in a real `sphinx-build` -- see python/rst_engine/sphinx_ext.py.
+    'rst_engine.sphinx_ext',
+    # Third-party -- `.. uml::`. Needs the `plantuml` command on PATH
+    # (or set the `plantuml` config value below to a full command, e.g.
+    # "java -jar C:/path/to/plantuml.jar"). Also picked up by the fast
+    # preview's own rstLivePreview.enableThirdPartyExtensions setting
+    # (off by default) -- see python/rst_engine/sphinx_plugins.py.
     'sphinxcontrib.plantuml',
-    'sphinxcontrib.drawio',
+    'sphinxcontrib.drawio'
     # 'sphinxcontrib.kroki'
 
 ]
