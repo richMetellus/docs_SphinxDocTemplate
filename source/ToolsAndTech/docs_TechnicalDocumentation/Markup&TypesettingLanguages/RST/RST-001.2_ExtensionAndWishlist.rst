@@ -1,8 +1,8 @@
-Introduction
-============
+Nootropy Introduction
+========================
 
-This page demonstrates the reStructuredText live preview extension. Edit this
-file in VS Code and watch the preview panel update in near real-time.
+This page demonstrates the vscode live markup preview extension, Nootropy. 
+Edit this file in VS Code and watch the preview panel update in near real-time.
 
 Features
 --------
@@ -61,7 +61,10 @@ This is previewing the AST live as well.
 
 I cannot believe this is rendering the project so fast as i type.
 
-**Test new features**
+Custom Markup 
+---------------
+
+**Testing new features**
 
 
 1. Strike 
@@ -138,15 +141,15 @@ I cannot believe this is rendering the project so fast as i type.
    - paragraph 
    
 
-    .. mark::
-       :color: #0f974c77 
+     .. mark::
+        :color: #0f974c77 
 
-       highlighted paragraph
-       text
+        Highlighted paragraph
+        text starts here.
 
-       the world is not all sunshine and rainbow.
+        The world is not all sunshine and rainbow...New paragraph
 
-       *italic* **bold** ``inline``
+        *italic* **bold** ``inline`` in new paragraph
 
 
 This is not doing the auto scrolling smoothly. This is still very fast.
@@ -156,8 +159,57 @@ I can see the document rendered live.
 :mark:`real purple text <purple>`
 :mark:`not real purple should apply to the text here due to escape should work \<purple\>`
 :mark:`highlighted inline interpreted text with rgb couch green <rgb(104, 129, 14)>`
+----
 
-*italic with escape\**
+Checking for fast rendering...still fast. yes indeed.
+:style:`Inline compose text that can span multiple lines and that still render 
+fast as I type. <bold italic mono bg=yellow underline=green strike=blue font=Colibri>` Regular
+text after that.
+
+The rendering is still very fast even with all the profiling of new code.
+
+.. style:: bold color=gray underline=red
+
+   A whole styled paragraph, still with *nested emphasis* working normally. 
+   even if the paragraph span many lines or is a multi paragraph document, then 
+   we can view the document.
+
+   Another paragraph starts...ok  
+
+.. style::
+   :color: cyan
+   :underline: yellow
+   :bg: black
+
+   A whole styled paragraph with cyan text, black background color, yellow underline
+   but no default strike color, 
+   **still** with *nested emphasis*  working ~normally~. :strike:`Another strike text no color specified`. 
+   :strike:`strike text using yellow strike <yellow>`
+   Even if the paragraph span many lines or is a multi paragraph document, then 
+   we can view the document.
+
+   Another paragraph starts...ok  
+
+~struck through~
+
+.. style::
+   :color: cyan
+   :underline: yellow
+   :bg: black
+   :strike: red
+
+   A whole styled paragraph with cyan text, black background color, yellow underline
+   and :color:`red <red>` text color, **still** with *nested emphasis* 
+   working ~normally~. :strike:`A strike text no color specified`. 
+   :strike:`strike with yellow strike <yellow>`
+   Even if the paragraph span many lines or is a multi paragraph document, then 
+   we can view the document.
+
+   Another paragraph starts...ok  
+
+----
+
+*italic with escape star symbol\**
 
 
 .. tip:: The error is fixed now.
@@ -362,22 +414,3 @@ checking for fast rendering...still fast. yes indeed.
 .. drawio-image:: ../../_images/src/Sphinx.drawio
    :page-index: 1
    :width: 500px
-
-
-checking for fast rendering...still fast. yes indeed. 
-:style:`fast as i type. <bold italic mono bg=yellow underline=green strike=blue font=Georgia>`
-
-The rendering is still very fast even with all the profiling of new code.
-
-.. style:: bold color=yellow underline=red
-
-   A whole styled paragraph, still with *nested emphasis* working normally.   
-
-.. style::
-   :bold:
-   :color: cyan
-   :underline: yellow
-
-   A whole styled paragraph, **still** with *nested emphasis* working ~normally~.
-
-~struck~
