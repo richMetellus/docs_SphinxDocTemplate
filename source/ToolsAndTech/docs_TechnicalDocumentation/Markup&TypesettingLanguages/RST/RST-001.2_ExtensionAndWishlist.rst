@@ -364,7 +364,11 @@ checking for fast rendering...still fast. yes indeed.
    :width: 500px
 
 
-checking for fast rendering...still fast. yes indeed. fast as i type.
+checking for fast rendering...still fast. yes indeed. 
+:style:`fast as i type. <bold italic mono bg=yellow underline=green strike=blue font=Georgia>`
 
 The rendering is still very fast even with all the profiling of new code.
 
+.. style:: bold color=yellow underline=red
+
+   A whole styled paragraph, still with *nested emphasis* working normally.   
