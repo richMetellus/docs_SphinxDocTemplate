@@ -45,10 +45,10 @@ How can this be so fast
 
     if c++
 
-.. image:: ../_images/CIMEmbeddedDiagrams-41.COMBlockDiagram.svg
+.. image:: ../../_images/CIMEmbeddedDiagrams-41.COMBlockDiagram.svg
    :width: 400px
 
-.. image:: ../_images/OutlookWithoutInternetError.png
+.. image:: ../../_images/OutlookWithoutInternetError.png
    :width: 300
 
 rendering is fast. The test is very fast in the
@@ -340,6 +340,10 @@ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
       
       *given the expressions*
 
+| timestamp: 08/15/2026 4:16PM edit.
+| timestamp: 08/15/2026 4:21PM edit.
+| timestamp: 08/15/2026 4:34PM edit.
+
 other 3rd party extensions
 ----------------------------
 
@@ -350,6 +354,7 @@ other 3rd party extensions
    Alice -> Bob: How are you?
    Bob --> Alice: I'm good, thanks!
 
-| timestamp: 08/15/2026 4:16PM edit.
-| timestamp: 08/15/2026 4:21PM edit.
-| timestamp: 08/15/2026 4:34PM edit.
+.. drawio-image:: ../../_images/src/Sphinx.drawio
+
+checking for fast rendering still.. yes
+checking for fast rendering...still fast.
