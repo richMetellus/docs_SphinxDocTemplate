@@ -357,4 +357,11 @@ other 3rd party extensions
 .. drawio-image:: ../../_images/src/Sphinx.drawio
 
 checking for fast rendering still.. yes
-checking for fast rendering...still fast.
+checking for fast rendering...still fast. yes indeed.
+
+.. drawio-image:: ../../_images/src/Sphinx.drawio
+   :page-index: 1
+   :width: 500px
+
+
+checking for fast rendering...still fast. yes indeed. fast as i type.
