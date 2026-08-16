@@ -365,3 +365,6 @@ checking for fast rendering...still fast. yes indeed.
 
 
 checking for fast rendering...still fast. yes indeed. fast as i type.
+
+The rendering is still very fast even with all the profiling of new code.
+
