@@ -175,7 +175,7 @@ The rendering is still very fast even with all the profiling of new code.
    even if the paragraph span many lines or is a multi paragraph document, then 
    we can view the document.
 
-   Another paragraph starts...ok  
+   Another paragraph starts... ``ok`` 
 
 .. style::
    :color: cyan
@@ -224,7 +224,7 @@ The rendering is still very fast even with all the profiling of new code.
    Even if the paragraph span many lines or is a multi paragraph document, then 
    we can still use the parsed syntax normally.
 
-   Another paragraph starts...ok  
+   Another paragraph starts...\ ``ok``
 
 ----
 
