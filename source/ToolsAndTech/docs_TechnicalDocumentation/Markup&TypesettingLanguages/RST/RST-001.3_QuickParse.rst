@@ -1,0 +1,162 @@
+. -*- coding: utf-8 -*-
+
+Basic Restructured Text
+########################
+
+reStructuredText 
+
+* is a plaintext markup language specification that was evolved out of StructuredText (developed by Zope
+  Corporation - formerly Digital Creations) and Setext.
+* uses simple and intuitive constructs, which are 
+  are equally easy to read in raw and processed forms, to indicate the structure 
+  of a document. [1]_
+* introduced on June 2001, by David Goodger as part of the Python Docutils 
+  project as an extensible markup language for Python documentation.
+* designed for **extensibility** for specific application domains.  
+* uses ``.rst`` as file extension for document written in reStructuredText syntax.
+
+.. note:: The specification is freely available on 
+    `docutils site <https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html>`_
+
+
+Basic Formatting
+******************
+
+In rST, you can use single asterisk for *italic*,  double 
+asterisk for **bold**, and double backtics for ``inline code``
+
+You can also create an unordered list using ``-``, ``*`` or ``+`` for 
+bullet points:
+
+- hey, i'm a bullet point 
+- another bullet point 
+
+  - use an empty line + indentation (3 or 4 spaces) for sub element 
+  - another sub-item 
+  
+- keep an empty line in between top element and sub-elements. If the paragraph need to be 
+  wrapped, keep the text aligned and the same level of indentation.
+- no empty line needed here but you can add one if you would like. 
+
+you can add a break using ``|`` syntax to create more space in between paragraphs
+
+|
+
++ a bullet point using the ``+`` syntax 
+
+* another bullet point using the ``*`` syntax. When mixing syntax, keep 
+  a blank line in between to avoid warning.
+
+**ordered list**
+
+1. item 1 in the list 
+2. item 2 
+#. use ``#.`` for auto-numbering 
+
+You can also specify the number at which the list should start 
+
+10. item 10 
+#. item 11 
+#. so on and so forth
+
+You can also have sub ordered list 
+
+1. item 1 
+
+    I. Item one using ``I.`` roman numerals 
+    #. Roman numeral item number ``1.II``
+    #. So on and so forth 
+
+1. item 2
+
+    i. Item one using ``i.`` roman numerals 
+    #. Roman numeral item number ``1.II``
+    #. So on and so forth 
+
+#. Item 3
+
+    A. another sub list, first item using ``A.`` as a capital letter for 
+       ordering.  
+    #. sub list, 2nd item (auto numbering)
+
+#. item 4
+
+    a. another sub list , using lower case letter 
+    #. item b 
+
+#. item 5 
+
+    1. using sub nested 
+    #. item 2 
+
+You can also mix bullet point and ordered list and vice versa: 
+
+1. A list as top level element
+
+    * a bullet point 
+    * another bullet point 
+
+
+* A bullet point as top level element 
+
+    1. a list of sub element 
+    #. another list element 
+
+       | ... 
+
+
+    5. jump to item 5
+
+
+Sphinx Original Extensions Integration 
+***************************************
+
+.. code-block:: Python 
+
+   print("hello world");
+
+This Repo Custom Sphinx Extensions 
+***********************************
+
+.. style::
+   :color: cyan
+   :underline: yellow
+   :mark: black
+   :bg: lightblue
+   :strike: red
+
+   A whole styled paragraph with cyan text, black background color, yellow underline
+   and :color:`a standalone red <red>` text color, **still** with *nested emphasis* 
+   working ~normally~. :strike:`A text with no strike color specified will get the a
+   strike line that match the text color`. 
+   :strike:`strike with yellow strike color specified <yellow>`
+   Even if the paragraph span many lines or is a multi paragraph document, then 
+   we can still use the parsed syntax normally.
+
+   Another paragraph starts...\ ``ok``
+
+3rd Party Sphinx Integration 
+*****************************
+
+.. collapse:: show/hide text
+   :open:
+
+   This is a simple text with rst formating **bold**, *italic*, ``inline mono``
+
+A New H2 Section added 
+***********************
+
+This paragraph is pasted **after** letting the debugger run without breakpoint
+before the *References* title.
+
+References 
+************
+
+
+.. [1]  `reStructuredText Markup Specification`_
+
+
+.. _sphinx project template: https://github.com/richMetellus/docs_SphinxDocTemplate
+
+
+.. _reStructuredText Markup Specification: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html
