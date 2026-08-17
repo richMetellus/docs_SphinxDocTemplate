@@ -163,7 +163,8 @@ I can see the document rendered live.
 
 Checking for fast rendering...still fast. yes indeed.
 :style:`Inline compose text that can span multiple lines and that still render 
-fast as I type. <bold italic mono bg=yellow underline=green strike=blue font=Colibri>` Regular
+fast as I type, which also uses a different font <bold italic mono bg=yellow underline=green strike=blue 
+font="Lucida Console">` Regular
 text after that.
 
 The rendering is still very fast even with all the profiling of new code.
@@ -195,15 +196,16 @@ The rendering is still very fast even with all the profiling of new code.
 .. style::
    :color: cyan
    :underline: yellow
-   :bg: black
+   :mark: black
    :strike: red
 
    A whole styled paragraph with cyan text, black background color, yellow underline
    and :color:`red <red>` text color, **still** with *nested emphasis* 
-   working ~normally~. :strike:`A strike text no color specified`. 
-   :strike:`strike with yellow strike <yellow>`
+   working ~normally~. :strike:`A text with no strike color specified will get the a
+   strike line that match the text color`. 
+   :strike:`strike with yellow strike color specified <yellow>`
    Even if the paragraph span many lines or is a multi paragraph document, then 
-   we can view the document.
+   we can still use the parsed syntax normally.
 
    Another paragraph starts...ok  
 
