@@ -209,6 +209,23 @@ The rendering is still very fast even with all the profiling of new code.
 
    Another paragraph starts...ok  
 
+.. style::
+   :color: cyan
+   :underline: yellow
+   :mark: black
+   :bg: lightblue
+   :strike: red
+
+   A whole styled paragraph with cyan text, black background color, yellow underline
+   and :color:`red <red>` text color, **still** with *nested emphasis* 
+   working ~normally~. :strike:`A text with no strike color specified will get the a
+   strike line that match the text color`. 
+   :strike:`strike with yellow strike color specified <yellow>`
+   Even if the paragraph span many lines or is a multi paragraph document, then 
+   we can still use the parsed syntax normally.
+
+   Another paragraph starts...ok  
+
 ----
 
 *italic with escape star symbol\**
