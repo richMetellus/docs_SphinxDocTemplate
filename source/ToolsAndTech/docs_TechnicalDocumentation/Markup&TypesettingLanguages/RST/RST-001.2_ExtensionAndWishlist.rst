@@ -16,19 +16,35 @@ Features
    This is a Sphinx-style admonition. Vanilla docutils already understands
    ``note``, ``warning``, ``tip``, and friends.
 
-.. warning:: This is a warning 
+.. admonition:: my admonition
+
+   admonition content 
+
+.. seealso:: This an admonition I tend to use to direct user's attention to 
+   some other part of the document. 
 
 .. tip:: This is a tip 
 
-.. admonition:: my admonition
-
-    admonition content 
+.. hint:: Hint directive 
 
 .. important:: 
    
    This is an important note. 
 
+
+.. warning:: This is a warning 
+
+.. attention:: Attention directive
+
+.. caution:: Caution directive
+
+.. error:: Error directive
+
+.. danger:: This is dangerous 
+
 .. code-block:: c
+   :caption: code block with emphasis
+   :emphasize-lines: 1
 
    if (python) {
        render();
