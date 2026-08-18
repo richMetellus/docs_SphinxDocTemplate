@@ -114,9 +114,9 @@ Custom Markup
          sample red
          paragraph 
  
-         multi-line
+         multi-paragraph
 
-         | obeying the 
+         | new paragraph obeying the 
          | line span
    
    - single or multi character color: :color:`r<red>`\ed :color:`y<yellow>`\ :color:`gr<green>`
@@ -156,8 +156,8 @@ This is not doing the auto scrolling smoothly. This is still very fast.
 I can see the document rendered live.
 
 :mark:`text with bad color parameter <badcolor>`
-:mark:`real purple text <purple>`
-:mark:`not real purple should apply to the text here due to escape should work \<purple\>`
+:mark:`real purple text.<purple>`
+:mark:`No real purple should apply to the text here due to escape should work \<purple\>`
 :mark:`highlighted inline interpreted text with rgb couch green <rgb(104, 129, 14)>`
 ----
 

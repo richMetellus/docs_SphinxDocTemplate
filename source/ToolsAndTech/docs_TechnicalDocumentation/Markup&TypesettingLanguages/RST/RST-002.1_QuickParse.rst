@@ -112,8 +112,17 @@ Sphinx Original Extensions Integration
 ***************************************
 
 .. code-block:: Python 
+   :linenos:
+   :emphasize-lines: 3, 4-5, 8
 
    print("hello world");
+
+   if(line_emphasis):
+      highlight(line_numbers)
+   
+   else:
+     
+     print("no highlight")
 
 This Repo Custom Sphinx Extensions 
 ***********************************
