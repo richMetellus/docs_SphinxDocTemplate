@@ -38,7 +38,7 @@ To get started with a python `Sphinx`_ project, you can either
    customizing it to your needs. Your can refer to that document for more in depth 
    use case.
 
-.. include:: ../MarkupLanguages/RST/RST-001.1_cheatsheet_BeginnersGuide.rst
+.. include:: ../Markup&TypesettingLanguages/RST/RST-001.1_cheatsheet_BeginnersGuide.rst
    :start-after: important-notice-with-indentation-SectionStart:
    :end-before: important-notice-with-indentation-SectionEnd:
 
