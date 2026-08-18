@@ -67,10 +67,10 @@ You can also have sub ordered list
     #. Roman numeral item number ``1.II``
     #. So on and so forth 
 
-1. item 2
+#. item 2
 
     i. Item one using ``i.`` roman numerals 
-    #. Roman numeral item number ``1.II``
+    #. Roman numeral item number ``2.ii``
     #. So on and so forth 
 
 #. Item 3
@@ -81,7 +81,7 @@ You can also have sub ordered list
 
 #. item 4
 
-    a. another sub list , using lower case letter 
+    a. another sub list , using lower case letter ``a``
     #. item b 
 
 #. item 5 

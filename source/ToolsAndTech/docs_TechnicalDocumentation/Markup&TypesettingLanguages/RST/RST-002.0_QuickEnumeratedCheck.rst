@@ -1,0 +1,75 @@
+Quick Enumerated List Check 
+############################
+
+**Romans + Alpha**
+
+I. item 1 starts with upper roman 
+
+   I. Item one sub item 1 start with ``I.`` roman numerals 
+   #. Roman numeral item number ``I.II``
+   #. So on and so forth using ``#`` continuation 
+
+#. item ``II`` roman using ``#`` continuation
+
+   a. another sub list , using lower case letter ``a``
+   #. item b 
+
+#. item ``II`` roman using ``#`` continuation
+
+   A. another sub list , using upper case letter ``A``
+   #. item B 
+
+   D. should start at alpha D.
+   #. Using ``#.`` = Continuation from here at E.
+
+**Romans starts at different line**
+
+II. 1st item should starts @II
+#. Should continue to 3....
+
+VI. Should skip to 6th. Needs a blank line beforehand.
+#. Using ``#.`` should continue to VII
+
+.. warning:: Notable exception
+
+   V. Romans numeral ``V``, ``X`` (10), ``L`` (50), ``D`` (500) ``M`` (Roman for 1,000) can 
+      be ambiguous so they are treated as Alpha characters instead.
+   #. Continuation 
+
+**Arabic + Romans**
+
+10. 10th item should starts @ arabic 10
+
+    i. subitem 1 using ``i.`` roman numerals (10.i)
+    #. Roman numeral item number ``10.ii``
+    #. So on and so forth using ``#`` continuation
+
+#. item should start @ arabic 11
+    
+   II. 1st subitem but start at ``II.`` roman numerals (11.II)
+   #. Roman numeral item number ``11.III``
+   #. So on and so forth using ``#.`` continuation (11.IV)
+
+**Arabic + Alpha**
+
+1. Items 1
+   
+   A. sub-items A (1.A)
+   #. Sub-item B
+   #. ...
+
+   M. Skipped to M 
+   #. Continuation should be N.
+
+#. Arabic Item 2
+   
+   a. Sub-item a (2.a)
+   #. So on and so forth (2.b)
+
+**Upper an Lower Alpha**
+
+A. Start with upper 
+#. Start with ``#`` Upper B. 
+   
+   a. sub-item lower alpha ``B.a``
+   #. continuation ``B.b``
