@@ -1,0 +1,88 @@
+Trace Back To Source Feature Edge Case 
+########################################
+
+Empty Comment 
+**************
+
+**File 1**
+
+1. a list 
+#. Line continuation 
+#. ..
+
+.. a comment
+
+Line Block with Code-block 
+****************************
+
+**File 2**
+
+* More examples
+
+  .. code-block:: c
+     :linenos:
+
+     #include <stdio.h>  
+     #define PI 3.1415
+     main()
+     { 
+        printf("%f",PI); 
+     }
+  
+  |
+
+  .. code-block:: c
+
+     // output
+     main.c:3:1: warning: return type defaults to 'int' [-Wimplicit-int]
+         3 |      main()
+           |      ^~~~
+
+     3.141500
+  
+  |
+
+  .. code-block:: c
+     :caption: define and undefine example
+     :linenos:
+
+     #include <stdio.h>  
+     #define PI 3.1415  
+     #undef PI  
+     int main() {  
+        printf("%f",PI);  
+     }
+
+  .. code-block:: c
+
+     // output:
+     main.c: In function 'main':
+     main.c:5:16: error: 'PI' undeclared (first use in this function)
+         5 |    printf("%f",PI);
+           |                ^~
+
+**Other source inclusion**
+
+.. include:: ./RST-002.0_QuickEnumeratedCheck.rst
+   :start-after: _include-marker-start:
+   :end-before: _include-marker-end
+
+This Repo Custom Sphinx Extensions 
+***********************************
+
+.. style::
+   :color: cyan
+   :underline: yellow
+   :mark: black
+   :bg: lightblue
+   :strike: red
+
+   A whole styled paragraph with cyan text, black background color, yellow underline
+   and :color:`a standalone red <red>` text color, **still** with *nested emphasis* 
+   working ~normally~. :strike:`A text with no strike color specified will get the a
+   strike line that match the text color`. 
+   :strike:`strike with yellow strike color specified <yellow>`
+   Even if the paragraph span many lines or is a multi paragraph document, then 
+   we can still use the parsed syntax normally.
+
+   Another paragraph starts...\ ``ok``

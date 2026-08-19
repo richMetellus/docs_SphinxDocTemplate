@@ -22,6 +22,8 @@ I. item 1 starts with upper roman
    D. should start at alpha D.
    #. Using ``#.`` = Continuation from here at E.
 
+.. _include-marker-start:
+
 **Romans starts at different line**
 
 II. 1st item should starts @II
@@ -49,6 +51,8 @@ VI. Should skip to 6th. Needs a blank line beforehand.
    II. 1st subitem but start at ``II.`` roman numerals (11.II)
    #. Roman numeral item number ``11.III``
    #. So on and so forth using ``#.`` continuation (11.IV)
+
+.. _include-marker-end:
 
 **Arabic + Alpha**
 
