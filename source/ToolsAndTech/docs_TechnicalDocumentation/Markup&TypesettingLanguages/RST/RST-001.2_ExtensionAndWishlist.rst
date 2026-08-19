@@ -113,12 +113,12 @@ Custom Markup
    .. underline::
       :color: green
        
-       An underline paragraph that can 
-       span multi-line.
+      An underline paragraph that can 
+      span multi-line.
    
-       A new paragraph start here. 
+      A new paragraph start here. 
    
-       Another paragraph starts here. 
+      Another paragraph starts here. 
    
 #. color 
   

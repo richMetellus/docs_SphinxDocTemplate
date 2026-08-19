@@ -86,3 +86,34 @@ This Repo Custom Sphinx Extensions
    we can still use the parsed syntax normally.
 
    Another paragraph starts...\ ``ok``
+
+Underline and line_block 
+**************************
+
+#. Underline 
+      
+   |
+
+   .. underline::
+     :color: yellow 
+
+     An underline paragraph that can 
+     span multi-line.
+
+     A new paragraph start here. 
+
+     Another paragraph starts here.
+
+     :color:`in block green text <green>` 
+   
+   |
+
+   .. underline::
+      :color: green
+       
+      An underline paragraph that can 
+      span multi-line.
+   
+      A new paragraph start here. 
+   
+      Another paragraph starts here. 
