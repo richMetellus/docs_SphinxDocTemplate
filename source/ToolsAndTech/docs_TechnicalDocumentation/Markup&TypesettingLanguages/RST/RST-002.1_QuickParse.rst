@@ -194,6 +194,8 @@ This Repo Custom Sphinx Extensions
 
    Another paragraph starts...\ ``ok``
 
+This also cause the other block to flicker.
+
 3rd Party Sphinx Integration 
 *****************************
 

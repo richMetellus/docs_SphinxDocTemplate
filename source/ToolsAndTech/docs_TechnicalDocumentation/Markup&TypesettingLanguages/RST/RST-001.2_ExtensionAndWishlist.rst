@@ -306,7 +306,8 @@ let's check if it still render fast. yes. **bold**
 
 
 
-even deleting whole block or moving them around is very fast.
+even deleting whole block or moving them around is very fast. typing in this side of the page does 
+cause some flickering but b
 
 Colorized Math Smoke Test
 --------------------------
@@ -449,12 +450,9 @@ checking for fast rendering...still fast. yes indeed.
 
 .. drawio-image:: ../../_images/src/Sphinx.drawio
    :page-index: 1
-   :width: 500px
+   :width: 400px
 
-Typing under drawio diagram is causing the page to flicker with this new 
-set of change
-
-I like how fast this first version is. Typing on this paragraph also cause 
-the preview to flicker.
-
-
+This block needs to be updated and nothing flickers. The paragraph that is 
+rendered with the fast preview does not cause any flickering in the 
+panel preview nor in the extension serial console output. This is now 
+fixed. This is very good user experience.
