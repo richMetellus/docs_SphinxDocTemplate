@@ -77,3 +77,6 @@ A. Start with upper
    
    a. sub-item lower alpha ``B.a``
    #. continuation ``B.b``
+
+I don't know why this system is slow now with the new parser. 
+Typing here is causing the webview to flicker as well.

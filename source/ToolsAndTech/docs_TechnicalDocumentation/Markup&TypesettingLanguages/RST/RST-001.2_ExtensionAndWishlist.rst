@@ -451,8 +451,10 @@ checking for fast rendering...still fast. yes indeed.
    :page-index: 1
    :width: 500px
 
-A good test is typing under a drawio diagram, the image rendered by 
-drawio is still steady and not causing any disturbance to the diagram
-as the document is re-rendered.
+Typing under drawio diagram is causing the page to flicker with this new 
+set of change
 
-I like how fast this first version is.
+I like how fast this first version is. Typing on this paragraph also cause 
+the preview to flicker.
+
+
