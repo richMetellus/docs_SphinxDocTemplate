@@ -117,3 +117,75 @@ Underline and line_block
       A new paragraph start here. 
    
       Another paragraph starts here. 
+
+Code-block within collapse
+*****************************
+
+#. Rebuild the project 
+
+   .. collapse:: Show/Hide result
+      :open:
+      
+      .. code-block:: bash 
+         :caption: commit cfc08bff536ca1afc2d66e950b6cf0e855c5c2a0
+         :emphasize-lines: 3-4
+
+          ricky-wsl@Rich-LenovExtX1:02_BasicProjStruct/build(main)$ rm -rf *; cmake ..; cmake --build .
+          [ 25%] Building CXX object CMakeFiles/MyLibrary.dir/mylib.cc.o
+          [ 50%] Linking CXX static library libMyLibrary.a
+          [ 50%] Built target MyLibrary
+          [ 75%] Building CXX object CMakeFiles/MyExecutable.dir/main.cc.o
+          [100%] Linking CXX executable MyExecutable
+          [100%] Built target MyExecutable
+          02_BasicProjStruct/build(main)$ ./MyExecutable 
+          Hello World!
+
+.. note:: Without this important line 
+
+    ``target_link_libraries(MyExecutable PUBLIC MyLibrary)``
+
+    we will get the same error as we did earlier 
+
+    .. code-block:: Console
+        :caption: linking error 
+
+        --- a/02_BasicProjStruct/CMakeLists.txt
+        +++ b/02_BasicProjStruct/CMakeLists.txt
+        @@ -18,4 +18,4 @@ add_library(MyLibrary STATIC mylib.cc)
+        #                  v
+        add_executable(MyExecutable main.cc) # compile the source files into an executable
+        
+        -target_link_libraries(MyExecutable PUBLIC MyLibrary) # link our library object file(s) ex mylib.o to the executable
+        +# target_link_libraries(MyExecutable PUBLIC MyLibrary) # link our library object file(s) ex mylib.o to the executable
+
+        02_BasicProjStruct/build(main)$ rm -rf *; cmake .. ; sleep 2; cmake --build .
+        -- The C compiler identification is GNU 11.4.0
+        -- The CXX compiler identification is GNU 11.4.0
+        -- Detecting C compiler ABI info
+        -- Detecting C compiler ABI info - done
+        -- Check for working C compiler: /usr/bin/cc - skipped
+        -- Detecting C compile features
+        -- Detecting C compile features - done
+        -- Detecting CXX compiler ABI info
+        -- Detecting CXX compiler ABI info - done
+        -- Check for working CXX compiler: /usr/bin/c++ - skipped
+        -- Detecting CXX compile features
+        -- Detecting CXX compile features - done
+        -- Configuring done
+        -- Generating done
+        -- Build files have been written to: /mnt/c/Repos/noteRenderer/Docs/source/Programming/BuildSystemsAndAutomation/Wiki_CMake/Courses/Wiki_ModernCMakeCrs/_resources/UdemyCmakeTutorial/02_BasicProjStruct/build
+        [ 25%] Building CXX object CMakeFiles/MyLibrary.dir/mylib.cc.o
+        [ 50%] Linking CXX static library libMyLibrary.a
+        [ 50%] Built target MyLibrary
+        [ 75%] Building CXX object CMakeFiles/MyExecutable.dir/main.cc.o
+        [100%] Linking CXX executable MyExecutable
+        /usr/bin/ld: CMakeFiles/MyExecutable.dir/main.cc.o: in function `main':
+        main.cc:(.text+0x9): undefined reference to `print_hello_world()'
+        collect2: error: ld returned 1 exit status
+        gmake[2]: *** [CMakeFiles/MyExecutable.dir/build.make:97: MyExecutable] Error 1
+        gmake[1]: *** [CMakeFiles/Makefile2:111: CMakeFiles/MyExecutable.dir/all] Error 2
+        gmake: *** [Makefile:91: all] Error 2
+
+* this line ``target_link_libraries(MyExecutable PUBLIC MyLibrary)`` tell the linker 
+  we have this *MyExecutable* and make sure the *MyLibrary* static library get linked 
+  to that executable.
