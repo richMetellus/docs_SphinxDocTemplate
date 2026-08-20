@@ -450,3 +450,9 @@ checking for fast rendering...still fast. yes indeed.
 .. drawio-image:: ../../_images/src/Sphinx.drawio
    :page-index: 1
    :width: 500px
+
+A good test is typing under a drawio diagram, the image rendered by 
+drawio is still steady and not causing any disturbance to the diagram
+as the document is re-rendered.
+
+I like how fast this first version is.
