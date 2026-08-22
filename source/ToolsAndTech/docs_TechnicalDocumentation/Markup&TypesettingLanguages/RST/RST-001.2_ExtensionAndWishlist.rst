@@ -452,7 +452,12 @@ checking for fast rendering...still fast. yes indeed.
    :page-index: 1
    :width: 400px
 
+The incremental change update is still very fast, no flickering of the preview.
+Still very smooth after these optimization. So far so good. Yes  even re-ordering 
+the block is fast.
+
 This block needs to be updated and nothing flickers. The paragraph that is 
 rendered with the fast preview does not cause any flickering in the 
 panel preview nor in the extension serial console output. This is now 
 fixed. This is very good user experience.
+
