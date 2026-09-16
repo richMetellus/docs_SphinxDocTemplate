@@ -461,3 +461,10 @@ rendered with the fast preview does not cause any flickering in the
 panel preview nor in the extension serial console output. This is now 
 fixed. This is very good user experience.
 
+Header 2: No paragraph 
+*************************
+
+Subheader 3 
+=============
+
+A simple paragraph under subheader 3
