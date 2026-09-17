@@ -1,11 +1,11 @@
 Nootropy Introduction
-========================
+######################
 
 This page demonstrates the vscode live markup preview extension, Nootropy. 
 Edit this file in VS Code and watch the preview panel update in near real-time.
 
 Features
---------
+**********
 
 - Fast, in-process reST parsing with docutils
 - Incremental, block-level preview updates
@@ -78,7 +78,7 @@ This is previewing the AST live as well.
 I cannot believe this is rendering the project so fast as i type.
 
 Custom Markup 
----------------
+**************
 
 **Testing new features**
 
@@ -136,6 +136,9 @@ Custom Markup
          | line span
    
    - single or multi character color: :color:`r<red>`\ed :color:`y<yellow>`\ :color:`gr<green>`
+     
+     :style:`y<mark=black color=yellow>`\ :style:`gr<color=green mark=black>`
+
    - color with escape :color:`no real red here \<red\>`
    - can the color parameter be anywhere or only at the end: ans => only at the end.
      
@@ -310,7 +313,7 @@ even deleting whole block or moving them around is very fast. typing in this sid
 cause some flickering but b
 
 Colorized Math Smoke Test
---------------------------
+**************************
 
 .. colorized-math::
 
@@ -417,7 +420,7 @@ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
   - need to understand what part of the code triggered sphinx build.
   - old flask app.py was triggering the sphinx-build and causing intro.html to be updated
 
-- can you use color with math directive? **No**
+- can you use inline color with math directive? **No**
 
   .. math::
   
@@ -425,6 +428,14 @@ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
   
       :color:`s <red>` = 2\ :color:`y <yellow>` + 4
   
+  but katex math already support colorized math:
+
+    .. math::
+  
+     a^2 + \textcolor{2266cc}{b}^2 = \textcolor{c0392b}{c}^2
+
+Space in words/phrases are not obeyed: correct behavior check:
+
   .. math::
       
       *given the expressions*
@@ -434,7 +445,7 @@ $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
 | timestamp: 08/15/2026 4:34PM edit.
 
 other 3rd party extensions
-----------------------------
+****************************
 
 .. uml::
 
@@ -443,17 +454,23 @@ other 3rd party extensions
    Alice -> Bob: How are you?
    Bob --> Alice: I'm good, thanks!
 
-.. drawio-image:: ../../_images/src/Sphinx.drawio
+.. style::
+   :bg: lightgray
+
+   .. drawio-image:: ../../_images/src/Sphinx.drawio
 
 checking for fast rendering still.. yes
 checking for fast rendering...still fast. yes indeed.
 
-.. drawio-image:: ../../_images/src/Sphinx.drawio
-   :page-index: 1
-   :width: 400px
+.. style::
+   :bg: lightblue
 
+   .. drawio-image:: ../../_images/src/Sphinx.drawio
+      :page-index: 1
+      :width: 400px
+   
 The incremental change update is still very fast, no flickering of the preview.
-Still very smooth after these optimization. So far so good. Yes  even re-ordering 
+Still very smooth after these optimizations. So far so good. Yes  even re-ordering 
 the block is fast.
 
 This block needs to be updated and nothing flickers. The paragraph that is 
@@ -461,10 +478,21 @@ rendered with the fast preview does not cause any flickering in the
 panel preview nor in the extension serial console output. This is now 
 fixed. This is very good user experience.
 
-Header 2: No paragraph 
+Header 2: With paragraph 
 *************************
 
+A text here 
+
 Subheader 3 
-=============
+============
 
 A simple paragraph under subheader 3
+
+Header 2: No Text 
+*******************
+
+Subheader 3: Should Still Render 
+==================================
+
+A simple paragraph under subheader. The ``Header 2: No Text`` should still 
+render.
