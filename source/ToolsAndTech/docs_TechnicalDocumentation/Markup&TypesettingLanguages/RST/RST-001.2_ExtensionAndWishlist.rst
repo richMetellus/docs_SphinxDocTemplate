@@ -447,12 +447,15 @@ Space in words/phrases are not obeyed: correct behavior check:
 other 3rd party extensions
 ****************************
 
-.. uml::
+.. style::
+   :bg: lightyellow 
 
-   Alice -> Bob: Hello
-   Bob --> Alice: Hi there
-   Alice -> Bob: How are you?
-   Bob --> Alice: I'm good, thanks!
+   .. uml::
+
+      Alice -> Bob: Hello
+      Bob --> Alice: Hi there
+      Alice -> Bob: How are you?
+      Bob --> Alice: I'm good, thanks!
 
 .. style::
    :bg: lightgray
@@ -462,12 +465,9 @@ other 3rd party extensions
 checking for fast rendering still.. yes
 checking for fast rendering...still fast. yes indeed.
 
-.. style::
-   :bg: lightblue
-
-   .. drawio-image:: ../../_images/src/Sphinx.drawio
-      :page-index: 1
-      :width: 400px
+.. drawio-image:: ../../_images/src/Sphinx.drawio
+   :page-index: 1
+   :width: 400px
    
 The incremental change update is still very fast, no flickering of the preview.
 Still very smooth after these optimizations. So far so good. Yes  even re-ordering 
