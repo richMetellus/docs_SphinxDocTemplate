@@ -509,3 +509,97 @@ Subheader 3: Should Still Render
 
 A simple paragraph under subheader. The ``Header 2: No Text`` should still 
 render.
+
+Testing Structure Elements 
+**************************
+
+
+.. grid:: 2
+ 
+    .. grid-item-card:: 
+        
+       .. drawio-image:: ../../_images/src/Sphinx.drawio
+
+    .. grid-item-card:: Extension
+        
+       .. drawio-image:: ../../_images/src/Sphinx.drawio
+          :page-index: 1
+          :width: 400px
+
+.. tabs::
+
+   .. tab:: Test1 
+      
+      Test 1 content 
+   
+   .. tab:: Test 2
+
+      Test 2 content 
+
+.. tabs::
+
+   .. group-tab:: Subject A 
+      
+      Subject A content 
+   
+   .. tab:: Subject B
+
+      Subject B content 
+
+.. tabs::
+
+   .. group-tab:: Subject A 
+      
+      Subject A content part 2
+   
+   .. tab:: Subject B
+
+      Group B content part 2
+
+----
+
+.. tabs::
+
+   .. group-tab:: Group A 
+      
+      Group A content part 1
+   
+   .. group-tab:: Group B
+
+      Group B content part 1
+
+.. tabs::
+
+   .. group-tab:: Group B
+
+      Group B content part 2
+
+   .. group-tab:: Group A 
+      
+      Group A content part 2
+
+.. tab-set::
+    :sync-group: os
+
+    .. tab-item:: Linux
+        :sync: linux
+
+        Linux content...
+
+    .. tab-item:: Windows
+        :sync: win
+
+        Windows content...
+
+.. tab-set::
+    :sync-group: os
+
+    .. tab-item:: Linux
+        :sync: linux
+
+        Matching Linux content...
+
+    .. tab-item:: Windows
+        :sync: win
+
+        Windows content...
