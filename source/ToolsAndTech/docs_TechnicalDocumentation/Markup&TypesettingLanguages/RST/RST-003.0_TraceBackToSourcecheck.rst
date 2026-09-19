@@ -186,6 +186,16 @@ Code-block within collapse
         gmake[1]: *** [CMakeFiles/Makefile2:111: CMakeFiles/MyExecutable.dir/all] Error 2
         gmake: *** [Makefile:91: all] Error 2
 
+
+Adding or removing more paragraphs here should render this block, and update the line
+that are changed and shift the block below.
+
+Add more paragraph here should render this and apply line offset to all remaining blocks below.
+
+Add more paragraph here should render this and apply line offset to block.
+
+Add more paragraph here should render this and shift the block below.
+
 * this line ``target_link_libraries(MyExecutable PUBLIC MyLibrary)`` tell the linker 
   we have this *MyExecutable* and make sure the *MyLibrary* static library get linked 
   to that executable.
