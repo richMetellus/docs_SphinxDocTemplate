@@ -119,7 +119,8 @@ Card occurrences
 
 .. card:: Occurrence 17
 
-   Plain card body, no nested diagram.
+   Plain card body, no nested diagram. This is a live edit as the document is currently being 
+   rendered. Not all bock are available. The render is still very fast.
 
 .. card:: Occurrence 18
 
@@ -129,3 +130,9 @@ Card occurrences
       Alice -> Bob: request 18
       Bob --> Alice: reply 18
       @enduml
+
+- a simple bullet list 
+- another bullet list 
+
+#. Enumerated list render fast here.
+#. This still render very fast here too.

@@ -457,6 +457,9 @@ other 3rd party extensions
       Alice -> Bob: How are you?
       Bob --> Alice: I'm good, thanks!
 
+This live edit is added right here
+Same paragraph span another line in live editor.
+
 .. style::
    :bg: lightgray
 
@@ -576,7 +579,7 @@ Testing Structure Elements
 
    .. group-tab:: Group A 
       
-      Group A content part 2
+      Group A content part 2. This is very fast indeed.
 
 .. tab-set::
     :sync-group: os
@@ -603,3 +606,137 @@ Testing Structure Elements
         :sync: win
 
         Windows content...
+
+.. _NootropyPerfSectionStart:
+
+.. card:: Code version use for tracing at this point. This here render fast but in 
+   Wiki CIM JNL-021_UnderstandingUngMESADeepDive, 1 keystroke take 2s to render.
+    
+    Inside a code block is not fast. When it should be very fast. Let's try now if the block is very fast.
+    This is really causing some bottle next. I expect this block to render fast but the  1 should still be fast here
+
+    .. code-block:: Console 
+        :caption: commit 
+
+        rmetellus@W1-A1022287:~/Workspace-CIM-WSL/Repos/Corp/pcm-ethernet-switch(15-MEBA_MEPA_MESA_SFF_SFPEval)$ git log
+        commit d061973ca7a7fa751ea58d1a08516ac39b0dd650 (HEAD -> 15-MEBA_MEPA_MESA_SFF_SFPEval)
+        Author: Richelin Metellus <richelin.metellus@cummins.com>
+        Date:   Tue Sep 17 12:33:53 2024 -0500
+
+        Add here still incremental.
+
+**Card occurrences**
+
+.. card:: Occurrence 1
+
+   Plain card body, no nested diagram -- most occurrences in the real
+   file that motivated this fix looked like this.
+
+.. card:: Occurrence 2
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: request 2
+      Bob --> Alice: reply 2
+      @enduml
+
+.. card:: Occurrence 3
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 4
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 5
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: request 5
+      Bob --> Alice: reply 5
+      @enduml
+
+.. card:: Occurrence 6
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 7
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 8
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: request 8
+      Bob --> Alice: reply 8
+      @enduml
+
+.. card:: Occurrence 9
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 10
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 11
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: request 11
+      Bob --> Alice: reply 11
+      @enduml
+
+.. card:: Occurrence 12
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 13
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 14
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: request 14
+      Bob --> Alice: reply 14
+      @enduml
+
+.. card:: Occurrence 15
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 16
+
+   Plain card body, no nested diagram.
+
+.. card:: Occurrence 17
+
+   Plain card body, no nested diagram. This is a live edit as the document is currently being 
+   rendered. Not all bock are available. The render is still very fast.
+
+.. card:: Occurrence 18
+
+   .. uml::
+
+      @startuml
+      Alice -> Bob: request 18
+      Bob --> Alice: reply 18
+      @enduml
+
+- a simple bullet list 
+- another bullet list 
+
+#. Enumerated list render fast here.
+#. This still render very fast here too. one keystroke here still near instant. Very fast rendering here indeed.
+   so freaking fast and near-instant.
+
+The document render here is very fast. The information are updated and render so fast. 1.
+keystroke are rendered in near-instant. This is so freaking cool. 1. 1
