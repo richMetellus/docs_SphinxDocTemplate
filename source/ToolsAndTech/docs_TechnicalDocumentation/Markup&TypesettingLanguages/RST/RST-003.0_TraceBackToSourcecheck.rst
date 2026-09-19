@@ -190,6 +190,14 @@ Code-block within collapse
 Adding or removing more paragraphs here should render this block, and update the line
 that are changed and shift the block below.
 
+
+Adding or removing more paragraphs here should render this block, and update the line
+that are changed and shift the block below.
+
+
+Adding or removing more paragraphs here should render this block, and update the line
+that are changed and shift the block below.
+
 Add more paragraph here should render this and apply line offset to all remaining blocks below.
 
 Add more paragraph here should render this and apply line offset to block.

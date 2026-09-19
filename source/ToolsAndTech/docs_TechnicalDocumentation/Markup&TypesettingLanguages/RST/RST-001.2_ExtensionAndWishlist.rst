@@ -465,6 +465,14 @@ other 3rd party extensions
 checking for fast rendering still.. yes
 checking for fast rendering...still fast. yes indeed.
 
+
+Adding or removing more paragraphs here should render this block, and update the line
+that are changed and shift the block below.
+
+
+Adding or removing more paragraphs here should render this block, and update the line
+that are changed and shift the block below.
+
 .. drawio-image:: ../../_images/src/Sphinx.drawio
    :page-index: 1
    :width: 450px
@@ -477,6 +485,11 @@ This block needs to be updated and nothing flickers. The paragraph that is
 rendered with the fast preview does not cause any flickering in the 
 panel preview nor in the extension serial console output. This is now 
 fixed. This is very good user experience.
+
+
+Adding or removing more paragraphs here should render this block, and update the line
+that are changed and shift the block below.
+
 
 Header 2: With paragraph 
 *************************
