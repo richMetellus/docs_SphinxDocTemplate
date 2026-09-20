@@ -135,4 +135,7 @@ Card occurrences
 - another bullet list 
 
 #. Enumerated list render fast here.
-#. This still render very fast here too.
+#. This still render very fast here too. Very fast even when there is a 
+   new line. This is very fast.
+
+   Adding a paragraph here does not cost extra penalty, rendering.

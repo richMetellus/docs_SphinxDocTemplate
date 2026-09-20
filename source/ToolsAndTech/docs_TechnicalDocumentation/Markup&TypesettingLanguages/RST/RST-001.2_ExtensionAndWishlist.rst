@@ -722,6 +722,14 @@ Testing Structure Elements
    Plain card body, no nested diagram. This is a live edit as the document is currently being 
    rendered. Not all bock are available. The render is still very fast.
 
+   - Bullet  list 
+   - bullet list 
+
+   #. Enumerated list 
+      
+      - nested bullet.
+
+
 .. card:: Occurrence 18
 
    .. uml::
