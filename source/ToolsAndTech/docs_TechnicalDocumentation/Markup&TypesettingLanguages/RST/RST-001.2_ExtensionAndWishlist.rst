@@ -65,7 +65,7 @@ How can this be so fast
    :width: 400px
 
 .. image:: ../../_images/OutlookWithoutInternetError.png
-   :width: 300
+   :width: 565px
 
 rendering is fast. The test is very fast in the
 

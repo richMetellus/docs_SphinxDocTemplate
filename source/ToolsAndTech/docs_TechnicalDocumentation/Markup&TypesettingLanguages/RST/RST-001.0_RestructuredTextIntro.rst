@@ -15,7 +15,8 @@ reStructuredText
 * designed for extensibility for specific application domains.  
 * uses ``.rst`` as file extension for document written in reStructuredText syntax.
 
-.. note:: The specification is freely available on 
+.. warning:: The specification is freely available on 
+
     `docutils site <https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html>`_
 
 Why Use reStructuredText?
