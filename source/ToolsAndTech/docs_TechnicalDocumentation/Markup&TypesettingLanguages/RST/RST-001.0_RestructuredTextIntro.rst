@@ -3,10 +3,10 @@
 Restructured Text (rST) Intro
 ################################
 
-reStructuredText 
+**reStructuredText** 
 
-* is a plaintext markup language specification that was evolved out of StructuredText (developed by Zope
-  Corporation - formerly Digital Creations) and Setext.
+   is a plaintext markup language specification that was evolved out of StructuredText (developed by Zope
+   Corporation - formerly Digital Creations) and Setext.   
 * uses simple and intuitive constructs, which are 
   are equally easy to read in raw and processed forms, to indicate the structure 
   of a document. [1]_

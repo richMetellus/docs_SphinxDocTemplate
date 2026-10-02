@@ -1,6 +1,11 @@
 # Markdown Preview 
 
-The live visual editor will need to update the raw plain text in a fast manner. 
+The live visual editor will need to update the raw plain text in a fast manner. This edit is fast and syn    added as you see with the document.
+
+
+Pressing enter create a new block.
+
+
 
 ## Myst restructext flavor of Markdown
 

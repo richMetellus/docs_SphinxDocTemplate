@@ -1,0 +1,79 @@
+Header 1
+=========
+
+We can all agree that changing the document in the **visual editor** is so much better. 
+We can create line break with just pressing ``Shift + Enter|``
+
+- [x] A task list in restructured text
+- [ ] Another task list that can have :style:`composable <bold color=#bc4c00>` :style:`inline <bold italic mark=#ffe0b3 color=#6e7781>` :style:`elements <bold underline color=#1a7f37>` 
+
+* a bullet list 
+
+#. A numbered list
+#. A continuation of numbered list
+
+#. Another number
+
+7. A numbered list that start at 7 make from the visual editor.
+#. this a continuation from 7
+#. This still should be a continuation from the visual editor.
+
+Adding a simple **paragraph** here. 
+
+1. A simple list
+2. Another item in the list, each appear as their own block
+
+   1. Pressing tab create this sub-list
+   2. We're still in that sub-list
+      When user press ``SHIFT + ENTER`` should create a new line in the same block. 
+      Even if we have **inline** element
+      
+      Multiple Presses of ``[Shift + Enter]`` should create additional line. 
+      Spaces              + newlines are preserved.
+      
+   #. Pressing ``Enter`` here create a new block of the same type
+   #. Press ``Enter`` at any part of any of the sub-nested item will split and create 
+      a block at that new point where the numbering will automatically adjust.
+   #. Keyboard ``Shift + Enter``
+   
+      create new lines.
+   #. Continuous pressing of ``Enter`` in next block will get us out of this multi-level list
+
+Header 2: Blockquotes
+------------------------
+
+This is the first normal text
+
+   This is a blockquotes in rst.
+
+This is a normal text
+
+This is normal text - 2.
+
+    "This theory, that is mine, is mine."
+    
+    -- Anne Elk (Miss)
+
+This is normal text- part 3.
+
+    This is the first level of the blockquote.
+    
+        This text is nested even further inside the blockquote.
+
+
+Header 2: Admonition and Table
+------------------------------
+
+
+.. note::
+
+   This is a simple note. You can **modify** as raw markup in the input box without any issue.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
+| Col 1                                                                                                                                                                          | Column 2    |
++================================================================================================================================================================================+=============+
+| This is a table that is easier to do in visual editor. Pressing Enter or [Shift + Enter] create new **bold**. Selecting text does not present bubble menu. This is raw markup. | Col 1 row 2 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
+|                                                                                                                                                                                |             |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
