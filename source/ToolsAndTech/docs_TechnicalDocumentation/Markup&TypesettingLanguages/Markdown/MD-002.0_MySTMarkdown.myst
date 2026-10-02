@@ -1,0 +1,42 @@
+# Markdown Preview 
+
+The live visual editor will need to update the raw plain text in a fast manner. 
+
+## Myst restructext flavor of Markdown
+
+:::{card}
+
+A card admonition from myst
+
+:::
+
+:::{note}
+
+A note style from myst 
+
+:::
+
+:::{code-block} Python
+
+
+print ("Hello World")
+
+for i in range(1,10):
+    do_something_with(i)
+:::
+
+## **Github** {underline}`Markdown` {style}`Flavor <color=#1a7f37 mark=#cde7ff>`
+
+Certain style works well in the title above in the visual editor, but in the Nootropy parser it will need some handling.
+
+
+[!NOTE] 💡
+Use Note for general context, links to related docs, or anything informational. 
+
+[!TIP] ✅ Use Tip for shortcuts, optimizations, or the "you probably also want…" hint. 
+
+[!IMPORTANT] 📌 Use Important when the reader needs to know this before they act on the rest of the doc.
+
+[!WARNING] ⚠️ Use Warning for things that will surprise people: breaking changes, side effects, footguns. 
+
+[!CAUTION] 🛑 Use Caution for the dangerous stuff. Data loss, irreversible operations, security gotchas.
