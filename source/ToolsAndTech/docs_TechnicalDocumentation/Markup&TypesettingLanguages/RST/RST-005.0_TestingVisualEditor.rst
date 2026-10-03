@@ -1,11 +1,12 @@
-Header 1
-=========
+Visual Editor Test 
+====================
 
 We can all agree that changing the document in the **visual editor** is so much better. 
-We can create line break with just pressing ``Shift + Enter|``
+We can create line break with just pressing ``Shift + Enter``
+
 
 - [x] A task list in restructured text
-- [ ] Another task list that can have :style:`composable <bold color=#bc4c00>` :style:`inline <bold italic mark=#ffe0b3 color=#6e7781>` :style:`elements <bold underline color=#1a7f37>` 
+- [x] Another task list that can have :style:`composable <bold color=#bc4c00>` :style:`inline <bold italic mark=#ffe0b3 color=#6e7781>` :style:`elements <bold underline color=#1a7f37>` 
 
 * a bullet list 
 
@@ -14,9 +15,9 @@ We can create line break with just pressing ``Shift + Enter|``
 
 #. Another number
 
-7. A numbered list that start at 7 make from the visual editor.
-#. this a continuation from 7
-#. This still should be a continuation from the visual editor.
+7. A numbered list that start at 7 make from the visual editor
+8. [Prior Action: Pressing enter] from the visual editor this create a direct numbering like ``8.``
+#. A new list number that start in the visual editor.
 
 Adding a simple **paragraph** here. 
 
@@ -70,10 +71,32 @@ Header 2: Admonition and Table
    This is a simple note. You can **modify** as raw markup in the input box without any issue.
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-| Col 1                                                                                                                                                                          | Column 2    |
-+================================================================================================================================================================================+=============+
-| This is a table that is easier to do in visual editor. Pressing Enter or [Shift + Enter] create new **bold**. Selecting text does not present bubble menu. This is raw markup. | Col 1 row 2 |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-|                                                                                                                                                                                |             |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
++-----------------------------------------------------------------------------------------+-----------------------------------------------------+
+| Col 1                                                                                   | Column 2                                            |
++=========================================================================================+=====================================================+
+| This is a table that is easier to do in visual editor.                                  | Col 1 row 2                                         |
+| Pressing [Shift + Enter] will now create new lines.                                     |                                                     |
+| Using raw markup only to do inline **bold** editing.                                    |                                                     |
+|                                                                                         |                                                     |
+| Should Preserved Space                                                                  |                                                     |
+|                                                                                         |                                                     |
+|                                                                                         |                                                     |
+| Selecting text does not present bubble menu.                                            |                                                     |
+| This is raw markup. TODO: Need to allow paste from clipboard as plain text              |                                                     |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------+
+| table cell resizing is not yet available                                                | `/` notation is not yet avaialble withing a table.  |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------+
+| /not slash notition yet but can enter raw markup:                                       |                                                     |
+|                                                                                         |                                                     |
+| .. image:: ../../_images/vexel-BD-wish.svg                                              |                                                     |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------+
+|                                                                                         |                                                     |
++-----------------------------------------------------------------------------------------+-----------------------------------------------------+
+
+Empty block is not allowed. Muti pressing ``Enter`` won't generate mutli space container block.
+
+
+The raw content can have empty space. But the visual edtior will not create the
+empty space.
+
+

@@ -67,9 +67,9 @@ How can this be so fast
 .. image:: ../../_images/OutlookWithoutInternetError.png
    :width: 565px
 
-rendering is fast. The test is very fast in the
+rendering is fast. The test is very fast in the live preview.
 
-**test** *italics*, ``car``
+**Test** *italics*, ``🤔``
 
 This is previewing the AST live as well.
 
