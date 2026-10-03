@@ -1,5 +1,5 @@
-Visual Editor Test 
-====================
+H1: Visual Editor Test 
+=======================
 
 We can all agree that changing the document in the **visual editor** is so much better. 
 We can create line break with just pressing ``Shift + Enter``
@@ -10,7 +10,19 @@ We can create line break with just pressing ``Shift + Enter``
 
 * a bullet list 
 
+  * Pressing Tab create a nested bullet list.
+  * Pressing enter create another bullet list at the same level.
+
+* Pressing Enter again cause us to back out of this level.
+
+  Pressing ``Shift + Enter`` causes a block level creation but it create a blank like when it should only create a new line
+
+  Pressing ``shift enter`` causes a new paragraph here
+
+* Pressing ``Enter`` cause a new bullet point.
+
 #. A numbered list
+#. [Pressing tab] did not cause the list to indent.
 #. A continuation of numbered list
 
 #. Another number
@@ -98,5 +110,29 @@ Empty block is not allowed. Muti pressing ``Enter`` won't generate mutli space c
 
 The raw content can have empty space. But the visual edtior will not create the
 empty space.
+
+Header 2: Testing Mermaid Diagram Whiteboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. mermaid::
+
+   flowchart LR
+     Idea["Idea"]
+     Next["Next"]
+     Done["Done"]
+     Idea --> Next
+     Next --> Done
+
+Header 2 Selected
+~~~~~~~~~~~~~~~~~~~~
+
+I selected header 2 but it's actually header 3
+
+H2: created from Visual Editor 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
 
 

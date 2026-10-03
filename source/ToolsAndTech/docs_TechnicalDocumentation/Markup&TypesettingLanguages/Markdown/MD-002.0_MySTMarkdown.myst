@@ -1,10 +1,25 @@
-# Markdown Preview 
+# Visual Editor Markdown Preview 
 
-The live visual editor will need to update the raw plain text in a fast manner. This edit is fast and syn    added as you see with the document.
+The live visual editor will need to update the raw plain text in a fast manner. This edit is fast and syncing is added as you see with the document.
 
 
 Pressing enter create a new block.
 
+
+## Text Formatting
+
+In markdown, you can use single asterisk or single underscore for *italic*,  double
+asterisk for **bold** or double underscore, and single backtics for `inline code`.
+
+- **Bold text**: `**Bold text**`
+  
+  - __Bold__ : ``__bold__``
+  
+- *Italic*: `*italic*` or
+  - _italic_: `_italic_`
+- Inline code `code`: \`code\`
+- ***bold italic***  : `***bold italic***`
+- ~~strikethrough~~ `~~strikethrough~~` (not in vanilla Markdown but supported by many tools)
 
 
 ## Myst restructext flavor of Markdown
@@ -45,3 +60,102 @@ Use Note for general context, links to related docs, or anything informational.
 [!WARNING] ⚠️ Use Warning for things that will surprise people: breaking changes, side effects, footguns. 
 
 [!CAUTION] 🛑 Use Caution for the dangerous stuff. Data loss, irreversible operations, security gotchas.
+
+## Testing Kanban 
+
+<!-- board:data id="tasks" field-types="Title=text,Status=status,Due=date" -->
+| Title | Status | Due |
+|---|---|---|
+| Write spec | Doing | 2026-10-02 |
+| Review spec | Todo |  |
+<!-- board:end -->
+<!-- board:view id="tasks-kanban" data="tasks" type="kanban" group-by="Status" columns="Todo|Doing|Done" -->
+
+**Testing Inserting kaban from other doc** 
+<!-- board:view id="tasks-all" data="notes/plan.md#tasks" type="table" sort="Due=asc" -->
+
+Next I will be testing the different headers
+
+## H2: created from Visual editor
+
+A normal paragaph here
+Pressing \[Shift + Enter\] Create the new line
+
+I pressed Enter in the visual editor to create a new block.
+A single `shift + Enter` create a new line in both editor view but will not cause a new line in the preview mode.
+
+### H3 created from visual editor by type `###` followed by a space + text
+
+#### H4 created from visual editor
+
+##### H5 created from Visual editor
+
+## Back to H2: Testing Different List
+
+### Bullet list:
+
+In markdown, you can use single asterisk or single underscore for \*italic\*,  double
+asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline code\`.
+
+- Typing `- space + text` create this bullet list in the visual editor
+- Pressing `Enter `automatically create this new bullet list
+- You can have inline formating **Bold text** , i*talic text*  and **{color}`composite inline format <#bc4c00>`**
+
+- ~~strike~~ through created through the visual editor.
+- **FIX-ME**: You can have {mark}`inline  <#c8f7c5>` format done via the bubble menu while the block is being created but once that's done for some reason this extension change it to read-only
+
+- create new bullet list using the `/` notation
+  - Press tab and it creates a nested bullet
+  - This was created after pressing Enter.
+    - Pressin tab before typing create nested gran-child
+  - Shift + tab does not cause detent but pressing `Enter twice` will.
+- This was created after pressing `Enter` twice.
+
+### Ordered/Enumerated List
+
+1. created using `1.` in visual editor
+2. Press Enter in the visual editor automatically create the new bullet list.
+3. Adding a new enumerated item in between 2 existing list item will cause the re-numbering to automatically adjust.
+4. The mardown writer will automatically add the next count.
+
+**Nested list**
+
+1. A new list start
+2. Pressing tab does not cause the list to indent
+   
+   1. **FIX-ME**: Add to resort to using the plain-text editor to cause indent/nested enumerated list.
+   2. Now I can create nested enumerated list using the visual editor.
+   3. Press `Enter `just create a new list with auto-numbering.
+      
+      1. **FIX-ME**: need another nested level here but add to use raw markup in plain text editor.
+
+3. Press Enter twice automatically shift back one level up
+
+4. I want a list item to start at 7 by typing 7. The plain text will list 7. but the visual editor and preview panel will continue the number as if it was part of the previous list.
+5. A new line here will cause the re-numbering to adjust in the plain-text editor as well.
+
+## Mixed List
+
+- A bullet list here to start
+- **FIX-ME**: Pressing tab here  did not create indent level
+  
+  1. Add to use raw markup in the plain-text editor to create this nested block.
+  2. Now I can use the visual editor to continue making modification.
+- Pressing `enter `2x in the visual editor, push up this block one level up ✅.
+
+<details>
+<summary>A collapsible block</summary>
+
+Insert the text here. Now I can modify the block using a text box. Press ESC to save and get out of the text box.
+
+- create a list using raw markup works here.
+  1. a numbered list after the bullet list.
+  2. Use raw **markup** to render the document.
+  
+
+</details>
+
+
+
+
+

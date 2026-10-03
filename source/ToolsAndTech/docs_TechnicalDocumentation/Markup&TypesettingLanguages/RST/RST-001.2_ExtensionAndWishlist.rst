@@ -748,3 +748,16 @@ Testing Structure Elements
 
 The document render here is very fast. The information are updated and render so fast. 1.
 keystroke are rendered in near-instant. This is so freaking cool. 1. 1
+
+H2: Testing Mermaid Canvas 
+***************************
+
+.. mermaid::
+
+   flowchart LR
+     Idea["Idea"]
+     Next["Next"]
+     Done["Done"]
+     Idea --> Next
+     Next --> Done
+
