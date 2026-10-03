@@ -3,7 +3,7 @@
 The live visual editor will need to update the raw plain text in a fast manner. This edit is fast and syncing is added as you see with the document.
 
 
-Pressing enter create a new block.
+Pressing enter create a new block. I can change this **block** 
 
 
 ## Text Formatting
@@ -154,6 +154,22 @@ Insert the text here. Now I can modify the block using a text box. Press ESC to 
   
 
 </details>
+
+## Trip planning
+
+**Do not forget to:**
+
+- [x] Pack toothbrush
+- [x] Comb
+- [ ] Highiene produce
+
+**Doggy Care**
+
+- [ ] Find dog guardian
+
+  ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg)
+
+
 
 
 

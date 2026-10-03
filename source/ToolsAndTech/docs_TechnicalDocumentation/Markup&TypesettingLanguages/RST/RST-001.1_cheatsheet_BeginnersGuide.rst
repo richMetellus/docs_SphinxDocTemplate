@@ -1345,6 +1345,7 @@ one can create a reStructuredText document
    :scale: 60%
    :alt: This document structure plantuml diagram
 
+
 References/Additional Resources
 ********************************
 
