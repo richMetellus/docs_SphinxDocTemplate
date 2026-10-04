@@ -51,6 +51,7 @@ VI. Should skip to 6th. Needs a blank line beforehand.
    II. 1st subitem but start at ``II.`` roman numerals (11.II)
    #. Roman numeral item number ``11.III``
    #. So on and so forth using ``#.`` continuation (11.IV)
+   #. This is a new block added in the visual editor, whiile the traceBackToSourceCheck which has a dependency on the quickEnumeratedCheck.rst file. The live preview will not see this change until the tracebackToSourceCheck.rst document is open in the visual editor or the plain-text document✅.  
 
 .. _include-marker-end:
 

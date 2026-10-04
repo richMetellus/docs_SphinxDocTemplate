@@ -7,8 +7,10 @@ Edit this file in VS Code and watch the preview panel update in near real-time.
 Features
 **********
 
-- Fast, in-process reST parsing with docutils
+- Fast, in-process reST parsing with docutils. this is simple edit here.
 - Incremental, block-level preview updates
+- **FIX-ME**: I can create new block in the raw plain text editor but I cannot create create
+  create new block in this document using the live visual editor.
 - Sphinx-compatible directives and roles
 
 .. note::

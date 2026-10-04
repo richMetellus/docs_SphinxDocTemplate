@@ -134,7 +134,13 @@ H2: created from Visual Editor
 
 
 .. image:: https://images.unsplash.com/25/puppy-love.jpg
-   :alt: Littel doggie
+   :alt: Little doggie
+
+I can create new block here. No problem.
+
+Writing this block here update the plain-text editor very fast. No problem. No delay.
+
+This document will only send the dela. Only the block that change will cause the DOM to update.
 
 
 
