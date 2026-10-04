@@ -9,8 +9,7 @@ Features
 
 - Fast, in-process reST parsing with docutils. this is simple edit here.
 - Incremental, block-level preview updates
-- **FIX-ME**: I can create new block in the raw plain text editor but I cannot create create
-  create new block in this document using the live visual editor.
+- Yes now I can create new block here in the visual editor without this given me an error the document is being re-read.
 - Sphinx-compatible directives and roles
 
 .. note::

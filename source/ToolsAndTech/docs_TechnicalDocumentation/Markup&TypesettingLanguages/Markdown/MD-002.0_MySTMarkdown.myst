@@ -3,7 +3,7 @@
 The live visual editor will need to update the raw plain text in a fast manner. This edit is fast and syncing is added as you see with the document.
 
 
-Pressing enter create a new block. I can change this **block** 
+Pressing enter create a new block. I can change this **block anytime.** 
 
 
 ## Text Formatting
@@ -61,19 +61,6 @@ Use Note for general context, links to related docs, or anything informational.
 
 [!CAUTION] 🛑 Use Caution for the dangerous stuff. Data loss, irreversible operations, security gotchas.
 
-## Testing Kanban 
-
-<!-- board:data id="tasks" field-types="Title=text,Status=status,Due=date" -->
-| Title | Status | Due |
-|---|---|---|
-| Write spec | Doing | 2026-10-02 |
-| Review spec | Todo |  |
-<!-- board:end -->
-<!-- board:view id="tasks-kanban" data="tasks" type="kanban" group-by="Status" columns="Todo|Doing|Done" -->
-
-**Testing Inserting kaban from other doc** 
-<!-- board:view id="tasks-all" data="notes/plan.md#tasks" type="table" sort="Due=asc" -->
-
 Next I will be testing the different headers
 
 ## H2: created from Visual editor
@@ -99,16 +86,18 @@ asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline
 
 - Typing `- space + text` create this bullet list in the visual editor
 - Pressing `Enter `automatically create this new bullet list
-- You can have inline formating **Bold text** , i*talic text*  and **{color}`composite inline format <#bc4c00>`**
-
+- You can have inline formating **Bold text** , *italic text*, `emphasis/inline code block text` and this block is still editable.
+- FIX-ME: but if you do bold color like this  **{color}`bold composite inline format <#bc4c00>`** then the block is marked as read-only.
+- but if you can have normal color like {color}`composite inline format <#bc4c00>` then the block is not marked as read-only, then you can modify in the visual editor without using any raw markup.
+ 
 - ~~strike~~ through created through the visual editor.
-- **FIX-ME**: You can have {mark}`inline  <#c8f7c5>` format done via the bubble menu while the block is being created but once that's done for some reason this extension change it to read-only
+- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble  <#1a7f37>`menu while the block is being created but once that's done for some reason this extension change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
 
 - create new bullet list using the `/` notation
   - Press tab and it creates a nested bullet
   - This was created after pressing Enter.
     - Pressin tab before typing create nested gran-child
-  - Shift + tab does not cause detent but pressing `Enter twice` will.
+  - Shift + tab does cause detent and also pressing `Enter twice` will.
 - This was created after pressing `Enter` twice.
 
 ### Ordered/Enumerated List
@@ -123,24 +112,21 @@ asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline
 1. A new list start
 2. Pressing tab does not cause the list to indent
    
-   1. **FIX-ME**: Add to resort to using the plain-text editor to cause indent/nested enumerated list.
+   1. No need to use the plain-text editor to cause indent/nested enumerated list., Just press Enter to create new block then tab to indent/create nested block.
+      1. This nestedness was created using the tab block.
    2. Now I can create nested enumerated list using the visual editor.
    3. Press `Enter `just create a new list with auto-numbering.
-      
-      1. **FIX-ME**: need another nested level here but add to use raw markup in plain text editor.
-
-3. Press Enter twice automatically shift back one level up
-
-4. I want a list item to start at 7 by typing 7. The plain text will list 7. but the visual editor and preview panel will continue the number as if it was part of the previous list.
+   4. Press `Enter `twice **or** `shift+tab `to dedent.
+3. Press Enter twice automatically shift back one level up. Present Enter to create a new block. To nest this already created block deeper just press tab.
+4. I want a list item to start at 7 by typing 7. But markdown does not support numbering that does not start at 1. The plain text will list 7. but the visual editor and preview panel will continue the number as if it was part of the previous list.
 5. A new line here will cause the re-numbering to adjust in the plain-text editor as well.
 
 ## Mixed List
 
-- A bullet list here to start
-- **FIX-ME**: Pressing tab here  did not create indent level
-  
-  1. Add to use raw markup in the plain-text editor to create this nested block.
-  2. Now I can use the visual editor to continue making modification.
+- A bullet list here to start.
+  - Pressing tab here  did create indent level and everything that is underneath to indent.
+    1. Add to use raw markup in the plain-text editor to create this nested block.
+    2. Now I can use the visual editor to continue making modification.
 - Pressing `enter `2x in the visual editor, push up this block one level up ✅.
 
 <details>
@@ -165,13 +151,24 @@ Insert the text here. Now I can modify the block using a text box. Press ESC to 
 
 **Doggy Care**
 
-- [ ] Find dog guardian
+- [x] Find dog guardian
 
   ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg)
 
 
 
+## Testing Kanban 
 
+<!-- board:data id="tasks" field-types="Title=text,Status=status,Due=date" -->
+| Title | Status | Due |
+|---|---|---|
+| Write spec | Doing | 2026-10-02 |
+| Review spec | Todo |  |
+<!-- board:end -->
+<!-- board:view id="tasks-kanban" data="tasks" type="kanban" group-by="Status" columns="Todo|Doing|Done" -->
+
+**Testing Inserting kaban from other doc** 
+<!-- board:view id="tasks-all" data="notes/plan.md#tasks" type="table" sort="Due=asc" -->
 
 
 
