@@ -122,7 +122,9 @@ of inline markup.
   |                                                    |                                                    |
   +----------------------------------------------------+----------------------------------------------------+
     
-.. note:: Inline markup cannot be nested. So you cannot 
+.. note:: 
+   
+   Inline markup cannot be nested. So you cannot 
    use something like this
 
    +-------------------------------------------+-------------------------------------------+
@@ -963,6 +965,10 @@ separating paragraphs (row 3, column 2), text extending past the right
 edge of the table, and a new row which will have no text in the first
 column in the processed output (row 4)
 
+
+The visual editor is can also render a table within another table. Here this is a reStructuredText simple table within a grid table.
+
+
 +---------------------------------------------------------------+---------------------------------------------------------------+
 | Raw Text                                                      | Rendered As                                                   |
 +===============================================================+===============================================================+
@@ -1002,6 +1008,8 @@ CSV Table
 .. tip:: for more information on the "csv-table" directive and the options 
     it supports, visit `docutils csv-table documentation <https://docutils.sourceforge.io/docs/ref/rst/directives.html#csv-table-1>`_
 
+The visual editor is can also show preview/rendering of a **csv table** within a the grid table. It works fine in the preview panel.
+
 **Example**
 
 +---------------------------------------------------------------+---------------------------------------------------------------+
@@ -1027,6 +1035,10 @@ CSV Table
 
 List Table Directive
 =====================
+
+The visual editor is not rendering the **list table** within a grid table type. 
+Same behavior observed as the simple table, or csv-table.
+
 
 +--------------------------------------+--------------------------------------+
 | Raw Text                             | Rendered Text                        |

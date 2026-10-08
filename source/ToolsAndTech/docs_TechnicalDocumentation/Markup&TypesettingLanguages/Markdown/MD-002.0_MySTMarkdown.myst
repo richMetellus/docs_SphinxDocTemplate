@@ -1,15 +1,18 @@
-# Visual Editor Markdown Preview 
+# Using MyST in Nootropy Visual Editor 
 
-The live visual editor will need to update the raw plain text in a fast manner. This edit is fast and syncing is added as you see with the document.
+Writting raw markup in a plain-text editor can be tedious. The visual editor gives the best of both world. It gives you a **what you write is what you see editor** while the underlying plain-text equivalent is rendered. This visual editor is a projection of the plain text. 
 
 
-Pressing enter create a new block. I can change this **block anytime.** 
+Pressing **Enter** or clicking on the + icon creates a new block below. You **can change most blocks anytime without using raw markup.** For blocks where the visual edit might be ambiguous, there will be an **Edit source** button that is visible when hover the block. Use it to modify the block in raw form. 
 
 
 ## Text Formatting
 
 In markdown, you can use single asterisk or single underscore for *italic*,  double
 asterisk for **bold** or double underscore, and single backtics for `inline code`.
+
+This should be editable in the visual editor and not marked as opaque - No need to
+click on `Edit source` -  When using raw markup in the plain-text editor you can use the forward slash `\` to escape parseable character. Example: \*italic\*,  double asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline code\`.
 
 - **Bold text**: `**Bold text**`
   
@@ -26,7 +29,7 @@ asterisk for **bold** or double underscore, and single backtics for `inline code
 
 :::{card}
 
-A card admonition from myst
+A card directive from myst
 
 :::
 
@@ -38,28 +41,57 @@ A note style from myst
 
 :::{code-block} Python
 
-
 print ("Hello World")
 
 for i in range(1,10):
     do_something_with(i)
 :::
 
-## **Github** {underline}`Markdown` {style}`Flavor <color=#1a7f37 mark=#cde7ff>`
+## **Github Amdonition** {underline}`Markdown` {style}`Flavor <color=#1a7f37 mark=#cde7ff>`
 
-Certain style works well in the title above in the visual editor, but in the Nootropy parser it will need some handling.
+Nootropy support Github Markdown style admonition:
 
+```md
+> [!NOTE] 
+> 💡Use Note for general context, links to related docs, or anything informational. 
+```
 
-[!NOTE] 💡
-Use Note for general context, links to related docs, or anything informational. 
+renders as =>
 
-[!TIP] ✅ Use Tip for shortcuts, optimizations, or the "you probably also want…" hint. 
+> [!NOTE] 
+> 💡Use Note for general context, links to related docs, or anything informational. 
 
-[!IMPORTANT] 📌 Use Important when the reader needs to know this before they act on the rest of the doc.
+```md
+> [!TIP] 
+> ✅ Use Tip for shortcuts, optimizations, or the > "you probably also want…" hint.
+```
+renders as =>
 
-[!WARNING] ⚠️ Use Warning for things that will surprise people: breaking changes, side effects, footguns. 
+> [!TIP] 
+> ✅ Use Tip for shortcuts, optimizations, or the > "you probably also want…" hint. 
 
-[!CAUTION] 🛑 Use Caution for the dangerous stuff. Data loss, irreversible operations, security gotchas.
+> [!IMPORTANT]  📌 **A malform gfm admonition is considered as blockquote** Use Important when the reader needs to know this before they act on the rest of the doc.
+
+> [!IMPORTANT]
+> 📌 **A wellform gfm admonition** Use Important when the reader needs to know this before they act on the rest of the doc.
+
+With markdown only 0 or 1 space is allowed after the admonition name ex: `> [!WARNING]` or `> [!WARNING] `
+
+This block 
+```md
+> [!WARNING] 
+⚠️ Use Warning for things that will surprise people: breaking changes, side effects, footguns. 
+```
+render as: 
+
+> [!WARNING] 
+⚠️ Use Warning for things that will surprise people: breaking changes, side effects, footguns.
+**Note**: This is a **Malform GFM warning** so the renderer will see it as ambiguous/opaque
+
+ 
+
+> [!CAUTION] 
+> 🛑 Use Caution for the dangerous stuff. Data loss, irreversible operations, security gotchas.
 
 Next I will be testing the different headers
 
@@ -71,27 +103,30 @@ Pressing \[Shift + Enter\] Create the new line
 I pressed Enter in the visual editor to create a new block.
 A single `shift + Enter` create a new line in both editor view but will not cause a new line in the preview mode.
 
+Press Enter once will create a new block/paragraph by default.
+
 ### H3 created from visual editor by type `###` followed by a space + text
 
 #### H4 created from visual editor
 
 ##### H5 created from Visual editor
 
+###### H6 Created from visual editor
+
+###### H6: Created from plain-text editor.
+
 ## Back to H2: Testing Different List
 
 ### Bullet list:
 
-In markdown, you can use single asterisk or single underscore for \*italic\*,  double
-asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline code\`.
-
 - Typing `- space + text` create this bullet list in the visual editor
 - Pressing `Enter `automatically create this new bullet list
 - You can have inline formating **Bold text** , *italic text*, `emphasis/inline code block text` and this block is still editable.
-- FIX-ME: but if you do bold color like this  **{color}`bold composite inline format <#bc4c00>`** then the block is marked as read-only.
+- If you do bold color like this  **{color}`bold composite inline format <#bc4c00>`** then the block is marked as still editable from the visual editor.
 - but if you can have normal color like {color}`composite inline format <#bc4c00>` then the block is not marked as read-only, then you can modify in the visual editor without using any raw markup.
  
 - ~~strike~~ through created through the visual editor.
-- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble  <#1a7f37>`menu while the block is being created but once that's done for some reason this extension change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
+- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble   <#1a7f37>`menu while the block is being created but once that's done for some reason this extension used to change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
 
 - create new bullet list using the `/` notation
   - Press tab and it creates a nested bullet
@@ -102,7 +137,7 @@ asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline
 
 ### Ordered/Enumerated List
 
-1. created using `1.` in visual editor
+1. Created using `1.` in visual editor
 2. Press Enter in the visual editor automatically create the new bullet list.
 3. Adding a new enumerated item in between 2 existing list item will cause the re-numbering to automatically adjust.
 4. The mardown writer will automatically add the next count.
@@ -117,11 +152,30 @@ asterisk for \*\*bold\*\* or double underscore, and single backtics for \`inline
    2. Now I can create nested enumerated list using the visual editor.
    3. Press `Enter `just create a new list with auto-numbering.
    4. Press `Enter `twice **or** `shift+tab `to dedent.
-3. Press Enter twice automatically shift back one level up. Present Enter to create a new block. To nest this already created block deeper just press tab.
-4. I want a list item to start at 7 by typing 7. But markdown does not support numbering that does not start at 1. The plain text will list 7. but the visual editor and preview panel will continue the number as if it was part of the previous list.
-5. A new line here will cause the re-numbering to adjust in the plain-text editor as well.
+3. Press `Enter` twice automatically shift back one level up. or Simply press `Enter`once to create a new block. To nest this already created block deeper just press tab.
+4. If you want a list item to start at 7 you have to first break out of this current list. Although Markdown supports numbering that does not start at 1. Typing 7.  when this block is created, in the plain text it will list 7.  at first but the visual editor and preview panel will continue the number as if it was part of the previous list.
+5. A new block here will cause the re-numbering to adjust in the plain-text editor as well. The 7. will change back to 4. in the plain-text editor as well. ✅
 
-## Mixed List
+**Testing: first create a list in plain-text editor then continue in visual editor**
+
+A list that should start at `10. `This will work here because of new line is created in the plain text editor.
+
+10. My list item start at 10.
+11. No need to manually type `11.` here.
+12. This new block is created using the visual editor and it autmatically create the next numbering
+13. block list item 13.
+14. item 14
+
+
+**I want to try the same feat using the visual editor. This time I want the list to start at 20.**
+
+
+20. list item 20 created from the visual editor. ✅
+21. I can retroactively put any new block item in the visual editor in between 2 existing one and the re-numbering will automatically re-adjust. ✅
+22. This List item was 21 when first created from the visual editor: ✅  
+
+
+### Mixed List
 
 - A bullet list here to start.
   - Pressing tab here  did create indent level and everything that is underneath to indent.
@@ -141,21 +195,161 @@ Insert the text here. Now I can modify the block using a text box. Press ESC to 
 
 </details>
 
-## Trip planning
+1. A number list to start; created in the visual editor.
+   - then a nested bullet
+     - Further nested bullet.
+     1. a bullet list turn into number list item.
+     2. A continuation of list item.
+     - Back to bullet list
+     - Bullet list
+     - [ ] Bullet list turn into task list
+     - [ ] Another task list.
+
+### Trip Planning To Do List
 
 **Do not forget to:**
 
-- [x] Pack toothbrush
-- [x] Comb
-- [ ] Highiene products
-
-**Doggy Care**
-
-- [x] Find dog guardian
+- [x] Pack the following items: TODO: FEATURE-ADD: the child item should automatically be check when the top-level parent item is check. If any of the children is uncheck then the top-level parent should not be checked.
+  - [x] Comb
+  - [x] toothbrush
+  - [x] other hiegenic products
+- [ ] Find dog sitter
 
   ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg)
 
+## Myst nested directive
 
+In my opinion using MyST nested directive is ugly. From their specifaction it states:
+
+> If you'd like to nest content blocks inside one another in Markdown (for example, to put a {note} inside of a {margin}), you may do so by adding extra backticks (\`) to the outer-most block. This works for literal code blocks as well.
+
+> For example, the following syntax:
+
+`````markdown
+````
+```
+```
+````
+`````
+
+Thus, if you'd like to nest directives inside one another, you can take the same approach. For example, the following syntax:
+
+`````markdown
+````{important}
+```{note}
+Here's my `important`, highly nested note! 🪆
+```
+````
+`````
+
+produces a nested, `important > note`:
+
+
+````{important}
+```{note}
+
+Here's my `important`, highly nested note! 🪆 
+
+```
+
+This code block is created from the visual editor y clicking the`+` icon next to the note block.
+
+````
+
+This block is created from the visual editor using the `+ `icon on hover the `important` admonition block. ✅
+
+> [!TIP]
+> This is why I prefer to write my note in restructured text. There is less ambiguity and simpler syntax.
+>
+> Note: THis is a GFM style tip.
+
+:::{tip}
+Using a MyST style `:::{tip}` allow inline edit without requiring a text box. 
+:::
+
+You can have a normal paragraph, Press `Shift + Enter` and then type `1.` 
+1\. That is not a list item here. This is just part of the normal paragraph
+
+
+::::{card}
+A card note created in the plain-text editor with other nested document
+
+The card block in visual editor should obey the margin. is too wide in the visual editor.
+
+> [!TIP]
+> A GFM style fo tip admonition.
+
+A `inline text literal` block here
+
+A code-block nested within card item block:
+
+```Python
+# A python comment.
+printf("This block does not require \
+a 'Edit source' click to modify")
+```
+
+Using a syntax like `:::{code} Python` should have the same behaviour as the ` ```Python ` syntax.
+
+:::{code} Python
+# A python comment.
+printf("This block should not require \
+a 'Edit source' click to modify")
+:::
+
+
+
+::::
+
+## Testing Tables
+
+**A 3x2 table**
+
+```{list-table}
+:header-rows: 1
+
+* - List-table Column 1
+  - List-table Column 2
+* - FIX-ME: Should be able to resize table column and row. 
+    
+    Space is preserved within a cell block.
+  - FIX-ME: Should be able to use the slash notiation inside the table no matter what. Using the / notation in here should the block picker just like clicking on the block picker handle ⠿ so user can insert other
+    block in that cell.  A `…` icon should be available option
+    A user should be able to add in many types of blocks, such as code-block, admonition, etc… in a table cell whilst in the visual editor without the user requiring knowledge of the raw markup.
+    
+    a raw code block markup
+* - 
+  - 
+```
+
+```{list-table}
+:header-rows: 1
+
+* - Column 1
+  - Column 2
+* - A simple grid table at first but not converted to list-table
+    
+    
+  - 
+```
+
+## Diagraming/Whiteboard
+
+I can create diagram block here, no problem due to Nootropy built-in Mermaid extension using MyST syntax. This edit will sync in the plain-text editor.
+
+```mermaid
+flowchart LR
+  Idea["Idea"]
+  Next("Implementing")
+  Done["Done"]
+  Next --> Done
+  Next --> Done
+  n1{"Worth Implementing \n via code ?"}
+  n1 --> Next
+  Idea --> n1
+  n2["Note"]
+%% nootropy-canvas {"Idea":{"x":9,"y":227},"Next":{"x":203,"y":127},"Done":{"x":324,"y":40},"n1":{"x":141,"y":211},"n2":{"x":452,"y":69,"shape":"sticky"}}
+```
 
 ## Testing Kanban 
 
@@ -163,12 +357,10 @@ Insert the text here. Now I can modify the block using a text box. Press ESC to 
 | Title | Status | Due |
 |---|---|---|
 | Write spec | Doing | 2026-10-02 |
-| Review spec | Todo |  |
+| Review spec. | Todo |  |
+| Planning Meeting | Done |  |
 <!-- board:end -->
 <!-- board:view id="tasks-kanban" data="tasks" type="kanban" group-by="Status" columns="Todo|Doing|Done" -->
 
 **Testing Inserting kaban from other doc** 
 <!-- board:view id="tasks-all" data="notes/plan.md#tasks" type="table" sort="Due=asc" -->
-
-
-

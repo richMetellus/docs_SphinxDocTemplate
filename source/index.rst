@@ -296,7 +296,7 @@ if you don't have them in your host system, please install them first.
       * Example using vscode 
         
         .. code-block:: console 
-           
+              
            code -n ~/.bashrc
    
    #. With the file opened and ready to be modified, add the following at the 
@@ -311,7 +311,7 @@ if you don't have them in your host system, please install them first.
    #. (optional) re-run the .bashrc script on any existing bash terminal you 
       have open 
 
-      .. code-block:: console
+      .. code-block:: Bash
          :caption: bash terminal
 
          source ~/.bashrc
@@ -339,7 +339,8 @@ to be on the user's build machine.
       to install plantuml to work with sphinx
       `plantuml <https://sphinx-needs.readthedocs.io/en/latest/installation.html>`_
      
-    .. important:: This project already have the plantuml.jar file in a 
+    .. important:: 
+       This project already have the plantuml.jar file in a 
        folder ``tools`` in the root directory of the project. You only need 
        to worry about installing java runtime environment (JRE) on your system.
 
@@ -358,7 +359,7 @@ and see there is a Pipefile.lock and install the required packages and their dep
    such as ``make html`` or ``make pdf`` as you normally would 
 
 Or once all the dependencies has been installed in the virtual environment 
-you can run specific command using ``pipenv run <command-you-want>`` without 
+you can run specific command using ``pipenv run <command-you-want>`` without
 having to activate the virtual environment.
 
 * Example, ``pipenv run make livehtml`` will start building the python sphinx

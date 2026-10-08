@@ -17,14 +17,22 @@ Features
    This is a Sphinx-style admonition. Vanilla docutils already understands
    ``note``, ``warning``, ``tip``, and friends.
 
+   add another child block here.
+
+   another child block added from the visual editor.
+
+ 
+
 .. admonition:: my admonition
 
    admonition content 
 
-.. seealso:: This an admonition I tend to use to direct user's attention to 
-   some other part of the document. 
+.. seealso::
+   
+   This an admonition I tend to use to direct user's attention to some other part of the document. 
 
-.. tip:: This is a tip 
+.. tip:: This is a tip near the directive name. To improve line-range, you should 
+   separate the paragraph and the directive name by a blank line.
 
 .. hint:: Hint directive 
 
@@ -37,7 +45,9 @@ Features
 
 .. attention:: Attention directive
 
-.. caution:: Caution directive
+.. caution::
+
+   Caution directive
 
 .. error:: Error directive
 
@@ -228,7 +238,7 @@ The rendering is still very fast even with all the profiling of new code.
    Even if the paragraph span many lines or is a multi paragraph document, then 
    we can still use the parsed syntax normally.
 
-   Another paragraph starts...ok  
+   Another paragraph starts...ok
 
 .. style::
    :color: cyan
@@ -252,7 +262,8 @@ The rendering is still very fast even with all the profiling of new code.
 *italic with escape star symbol\**
 
 
-.. tip:: The error is fixed now.
+.. tip:: 
+   The error is fixed now.
 
 
 1. numbered list 
@@ -294,7 +305,7 @@ A simple note for the world to see still render very fast.
 
 A paragraph after the comment with **bold text**, *emphasis*, and ~strike <green>~
 
-.. list-table:: a simple table 
+.. list-table:: a simple list-table 
    
    * - row 1 col1
      - row 1 col 2
@@ -330,7 +341,7 @@ Colorized Math Smoke Test
   
      a^2 + \textcolor{2266cc}{b}^2 = \textcolor{c0392b}{c}^2
 
-- markdown style math using ``$$`` not rendered. Need explicit directive ``:math:`` 
+- markdown style math using ``$$`` not supported in rst. Need explicit directive ``:math:`` 
 
 $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
 
@@ -514,8 +525,11 @@ Subheader 3: Should Still Render
 A simple paragraph under subheader. The ``Header 2: No Text`` should still 
 render.
 
-Testing Structure Elements 
-**************************
+Testing Structure Elements/Containers 
+*************************************
+
+
+FIX-ME: Clicking on the nested child :underline:`grid-item-card` **Edit title and Options > Edit Source** opens the child element in the plain editor instead of in-place within the visual editor ❌. Editing the grid level 0, should just open the in-visual part-editor including the children.  
 
 
 .. grid:: 2
@@ -534,11 +548,11 @@ Testing Structure Elements
 
    .. tab:: Test1 
       
-      Test 1 content 
+      Test 1 content. I can modify this tab item block content without clicking on **edit source** first. Bubble menu fully supported. 
    
    .. tab:: Test 2
 
-      Test 2 content 
+      Test 2 content. I can now modify the content from the visual editor without pressing Edit source. 
 
 .. tabs::
 
@@ -614,7 +628,8 @@ Testing Structure Elements
    Wiki CIM JNL-021_UnderstandingUngMESADeepDive, 1 keystroke take 2s to render.
     
     Inside a code block is not fast. When it should be very fast. Let's try now if the block is very fast.
-    This is really causing some bottle next. I expect this block to render fast but the  1 should still be fast here
+    This is really causing some bottle next. I expect this block to render fast but the  1 should still be fast here.
+    Still checking if this still fast.
 
     .. code-block:: Console 
         :caption: commit 
@@ -747,8 +762,8 @@ Testing Structure Elements
 #. This still render very fast here too. one keystroke here still near instant. Very fast rendering here indeed.
    so freaking fast and near-instant.
 
-The document render here is very fast. The information are updated and render so fast. 1.
-keystroke are rendered in near-instant. This is so freaking cool. 1. 1
+The document render here is very fast. The information are updated and render so fast. 1. keystroke are rendered in near-instant. This is so freaking cool. 1. 1
+Shift + Enter in visual editor create new line. This still very fast rendering.
 
 H2: Testing Mermaid Canvas 
 ***************************
