@@ -3,15 +3,6 @@
 Writting raw markup in a plain-text editor can be tedious. The visual editor gives the best of both world. It gives you a **what you write is what you see editor** while the underlying plain-text equivalent is rendered. This visual editor is a projection of the plain text. 
 
 
-```{table} Caption
-
-| Column 1 | Column 2 |
-| --- | --- |
-| another paragraph cell<br>Cab insert text after pressing SHIFT + Enter<br> | row can be insert. |
-| Modify the test here | Modify the cell here in the visual editor |
-```
-
-
 Pressing **Enter** or clicking on the + icon creates a new block below. 
 
 
@@ -315,7 +306,7 @@ a 'Edit source' click to modify")
 
 ## Testing Tables
 
-**A 3x2 table**
+**A 3x2 table List table.**
 
 :::{list-table}
 :header-rows: 1
@@ -348,9 +339,69 @@ a 'Edit source' click to modify")
 :::
 
 
-| A GFM r1col2 header | header is modifiable from visual editor. Changes are applied to plain-text editor.    |
+### A Pure GFM table
+
+| A GFM row1,column2 header | header is modifiable from visual editor. Changes are applied to plain-text editor.    |
 | --- | --- |
-| # H1 parse in Visual editor but not in Previe <br> tryig will go. the document here will render.<br> This is written after the `<br` | typing here from visual editor work here. Press entter<br>create a explicit `br` directive. Press Shift + Enter <br>create a new explicit `br` block. This sometimes stop working sometimes after multiple \[SHIFT + Enter\]. FIX-ME.<br>FIX-ME: One press of keyboard `Enter `should create a new in cell block instead of a new line break.<br>FIX-ME: Sometimes typing in the text-editor will cause this visual editor to miss some changes.  |
+| # H1 raw markup will not parse in Visual editor, neither in Preview <br> The cell used to be parsed as their own document.the document here will render.<br> This is written after the `<br>` | typing here from visual editor work here. Press entter<br>create a explicit `br` directive. Press Shift + Enter <br>create a new explicit `br` block. This sometimes stop working sometimes after multiple \[SHIFT + Enter\]. FIX-ME.<br>FIX-ME: One press of keyboard `Enter `should create a new in cell block instead of a new line break.<br>FIX-ME: Sometimes typing in the text-editor will cause this visual editor to miss some changes. Adding an image here   ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg) <br> </br> * this image from unplash url renders in the preview panel. The bullet list is not supported in GFM markdown, neither in Nootropy so this line will not rendered as bullet list..
+  |
+
+### MySt GFM table with caption. 
+
+```{table} My Table Caption
+
+| Column 1 | Column 2 |
+| --- | --- |
+| another paragraph cell<br>Can insert text after pressing SHIFT + Enter<br><br>Enter cause a line break and not new block | row can be inserted from the visual editor and the change will make it to the plain-text.<br> - not bullet point here. <br> You can do inline **formatting**, `code`, *italic* <br> you can insert image using the plain-text editor.  NEW: FIX-ME: Image insert while in  a GFM table cell is not yet supported in the visual editor. I had to use the plain-text editor to inser the below image.<br> ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg) <br>All this a considered one big paragraph in the cell. I mostly modified this in the plain-text editor since I cannot insert an image here in the visual editor without complaint. <br><br>create new line break paragraph with no worry. |
+| Modify the test here | Modify the cell here in the visual editor |
+```
+
+
+## CSV Table using MyST
+
+```{csv-table}
+:header-rows: 1
+
+Column 1, Column 2
+"csv table row", "- row 1 col2 as bullet list ✅
+- Another bullet list
+  - attempting to nest bullet list here. FIX-ME: The indentation level is cleary visible in the webview pannel but not in the visual editor. The indentation is correct in the plain-text doc.",
+
+"# h1 added using he plain-text editor
+
+- a bullet list here
+
+1. a numbered list here
+   1. a nested item number
+   2. another neststed item number
+   
+   * a bullet list at that same level of nestedness", "# H1 Header 1 in col2 
+- row 2 col2 as bullet list ✅
+- Another bullet list
+  - attempting to nest bullet list here. The indentation level is cleary visible in the webview pannel as well as the visual editor ✅. The indentation is correct in the plain-text doc.
+  
+  FIX-ME: Writting in this block using the visual editor does not commit to the plain-text document.The edits in the visual editor are not picked up. Bi-directional syncing should still work.",
+```
+
+
+
+## List-Table
+
+```{list-table}
+:header-rows: 1
+
+* - Myst List table Col 1
+  - A header
+* - a row that sync to the plain text editor
+  - # H1 in col 2 created from visual editor, sync to plain text
+
+    A simple paragraph here.
+
+    A pagraph that span multi line
+    in the plain-text and visual editor due to the user press of `SHIFT + ENTER`
+
+    We can have **inline bold, *italic, {underline}`underline`***
+```
 
 ## Diagraming/Whiteboard
 
