@@ -13,6 +13,8 @@ We can create line break with just pressing ``Shift + Enter``
   * Pressing Tab create a nested bullet list.
   * Pressing enter create another bullet list at the same level.
 
+- If you do bold color like this :color:`bold composite inline format <#bc4c00>` then the block is marked as still editable from the visual editor.
+
 * Pressing Enter again cause us to back out of this level.
 
   Pressing ``Shift + Enter`` causes a block level creation but it create a blank like when it should only create a new line
@@ -82,34 +84,74 @@ Header 2: Admonition and Table
 
    This is a simple note. You can **modify** as raw markup in the input box without any issue.
 
+   .. csv-table::
+      :header-rows: 1
 
-+-----------------------------------------------------------------------------------------+-----------------------------------------------------+
-| Col 1                                                                                   | Column 2                                            |
-+=========================================================================================+=====================================================+
-| This is a table that is easier to do in visual editor.                                  | Col 1 row 2                                         |
-| Pressing [Shift + Enter] will now create new lines.                                     |                                                     |
-| Using raw markup only to do inline **bold** editing.                                    |                                                     |
-|                                                                                         |                                                     |
-| Should Preserved Space                                                                  |                                                     |
-|                                                                                         |                                                     |
-|                                                                                         |                                                     |
-| Selecting text does not present bubble menu.                                            |                                                     |
-| This is raw markup. TODO: Need to allow paste from clipboard as plain text              |                                                     |
-+-----------------------------------------------------------------------------------------+-----------------------------------------------------+
-| table cell resizing is not yet available                                                | `/` notation is not yet avaialble withing a table.  |
-+-----------------------------------------------------------------------------------------+-----------------------------------------------------+
-| /not slash notition yet but can enter raw markup:                                       |                                                     |
-|                                                                                         |                                                     |
-| .. image:: ../../_images/vexel-BD-wish.svg                                              |                                                     |
-+-----------------------------------------------------------------------------------------+-----------------------------------------------------+
-|                                                                                         |                                                     |
-+-----------------------------------------------------------------------------------------+-----------------------------------------------------+
+      "A csv table inside an admoniton", Column 2
+      "a simple comma where you can have commad, seprated list", "This is great"
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
+| Col 1                                                                                                                               | Column 2                                            |
++=====================================================================================================================================+=====================================================+
+| This is a table that is easier to do in visual editor.                                                                              | Col 1 row 2                                         |
+| Pressing [Shift + Enter] will now create new lines.                                                                                 |                                                     |
+| Using raw markup only to do inline **bold** editing.                                                                                |                                                     |
+|                                                                                                                                     |                                                     |
+| Visual editor does not preserved space. Inside that table blank line are ignored.                                                   |                                                     |
+|                                                                                                                                     |                                                     |
+|                                                                                                                                     |                                                     |
+|                                                                                                                                     |                                                     |
+|                                                                                                                                     |                                                     |
+| Selecting text does not present bubble menu.                                                                                        |                                                     |
+| This is raw markup. TODO: Need to allow paste from clipboard as plain text                                                          |                                                     |
+|                                                                                                                                     |                                                     |
+| A normal paragraph here. I am going to press SHIFT + ENTER twice                                                                    |                                                     |
+|                                                                                                                                     |                                                     |
+| FIX-ME: The visual editor to plain text writer just inserted extra lines. Typing get duplicated. and one less character is missing  |                                                     |
++-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
+| table cell resizing is only available through colum edit menu. Use the column block picker                                          |                                                     |
++-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
+| .. image:: ../../_images/vexel-BD-wish.svg                                                                                          |                                                     |
+|                                                                                                                                     |                                                     |
+| FIX-ME: This image is not rendered in the visual editor but rendered in the preview panel.                                          |                                                     |
++-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
+|                                                                                                                                     |                                                     |
++-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
 
 Empty block is not allowed. Muti pressing ``Enter`` won't generate mutli space container block.
 
 
 The raw content can have empty space. But the visual edtior will not create the
 empty space.
+
+
+
+
+List-table
+~~~~~~~~~~~~~
+
+a list table created from the visual editor
+
+FIX-ME: The row2 content is not rendered in the visual editor. The cells shows as empty 
+during the session even though the content exist in the plain-text editor and the preview panel.
+Attempting to modify the cell in the visual editor gives that warning: 
+
+TODO: FEATURE-ADD: Maybe add a check that will verify if the visual editor ``edit not applied the cell is no longer 
+in the table``
+and the plain-text editor are out-of-sync. If they are ouf of sycn, then present the 
+user with a pop-up that will ask to reload from disk (the plain-text editor version).
+
+.. list-table::
+   :header-rows: 1
+
+   * - A header
+     - another header 
+   * - a cell in row 1
+     - another 
+
+
+
 
 Header 2: Testing Mermaid Diagram Whiteboard
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

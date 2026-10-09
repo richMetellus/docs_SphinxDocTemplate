@@ -3,7 +3,19 @@
 Writting raw markup in a plain-text editor can be tedious. The visual editor gives the best of both world. It gives you a **what you write is what you see editor** while the underlying plain-text equivalent is rendered. This visual editor is a projection of the plain text. 
 
 
-Pressing **Enter** or clicking on the + icon creates a new block below. You **can change most blocks anytime without using raw markup.** For blocks where the visual edit might be ambiguous, there will be an **Edit source** button that is visible when hover the block. Use it to modify the block in raw form. 
+```{table} Caption
+
+| Column 1 | Column 2 |
+| --- | --- |
+| another paragraph cell<br>Cab insert text after pressing SHIFT + Enter<br> | row can be insert. |
+| Modify the test here | Modify the cell here in the visual editor |
+```
+
+
+Pressing **Enter** or clicking on the + icon creates a new block below. 
+
+
+You **can change most blocks anytime without using raw markup.** For blocks where the visual edit might be ambiguous, there will be an **Edit source** button that is visible when hover the block. Use it to modify the block in raw form.
 
 
 ## Text Formatting
@@ -126,9 +138,9 @@ Press Enter once will create a new block/paragraph by default.
 - but if you can have normal color like {color}`composite inline format <#bc4c00>` then the block is not marked as read-only, then you can modify in the visual editor without using any raw markup.
  
 - ~~strike~~ through created through the visual editor.
-- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble   <#1a7f37>`menu while the block is being created but once that's done for some reason this extension used to change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
+- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble         <#1a7f37>`menu while the block is being created but once that's done for some reason this extension used to change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
 
-- create new bullet list using the `/` notation
+- create new bullet list using the `/` notation 
   - Press tab and it creates a nested bullet
   - This was created after pressing Enter.
     - Pressin tab before typing create nested gran-child
@@ -305,33 +317,40 @@ a 'Edit source' click to modify")
 
 **A 3x2 table**
 
-```{list-table}
+:::{list-table}
 :header-rows: 1
 
 * - List-table Column 1
   - List-table Column 2
-* - FIX-ME: Should be able to resize table column and row. 
+* - TODO: FEATURE-ADD: Should be able to resize visually the table column and row width and heigh using cursor drag from the visual editor when possible. The user will just select the row or column high and drag to the positon and the software will compute the pixel for that and either use the option `:width:` or `:height:` if they are supported or use a comment that contain metadata using  json (for grid and simple table)
     
-    Space is preserved within a cell block.
-  - FIX-ME: Should be able to use the slash notiation inside the table no matter what. Using the / notation in here should the block picker just like clicking on the block picker handle ⠿ so user can insert other
-    block in that cell.  A `…` icon should be available option
+    Testing: To explicitly add an empty space in the table cell, use raw html
+
+    <br> </br>
+    
+    THis preserve space within a cell block.
+
+    
+    The plain-text has multiple empty line here but that won't be visible in the preview nor the visual editor webview: Great.
+
+  - TODO: FEATURE-ADD: the `…` icon should be available option
     A user should be able to add in many types of blocks, such as code-block, admonition, etc… in a table cell whilst in the visual editor without the user requiring knowledge of the raw markup.
+    a raw code block markup. This cell picker and also the bubble menu should include an option that will allow the user to clear the content of the table cell.
     
-    a raw code block markup
+    **More Testing**
+    
+    - a nested inside a table cell.
+    - another bullet list create inside the nested table using the visual editor by typing `*` .
+
 * - 
   - 
-```
 
-```{list-table}
-:header-rows: 1
+:::
 
-* - Column 1
-  - Column 2
-* - A simple grid table at first but not converted to list-table
-    
-    
-  - 
-```
+
+| A GFM r1col2 header | header is modifiable from visual editor. Changes are applied to plain-text editor.    |
+| --- | --- |
+| # H1 parse in Visual editor but not in Previe <br> tryig will go. the document here will render.<br> This is written after the `<br` | typing here from visual editor work here. Press entter<br>create a explicit `br` directive. Press Shift + Enter <br>create a new explicit `br` block. This sometimes stop working sometimes after multiple \[SHIFT + Enter\]. FIX-ME.<br>FIX-ME: One press of keyboard `Enter `should create a new in cell block instead of a new line break.<br>FIX-ME: Sometimes typing in the text-editor will cause this visual editor to miss some changes.  |
 
 ## Diagraming/Whiteboard
 

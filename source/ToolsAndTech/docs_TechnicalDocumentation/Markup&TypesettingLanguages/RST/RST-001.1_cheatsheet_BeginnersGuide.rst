@@ -125,7 +125,8 @@ of inline markup.
 .. note:: 
    
    Inline markup cannot be nested. So you cannot 
-   use something like this
+   use something like this. FIX-ME: The line range for the the table below is wrong. 
+   It is missing the first horizontal row marker of the table ``+---``.
 
    +-------------------------------------------+-------------------------------------------+
    | **Raw Text**                              | **Rendered as**                           |
@@ -180,6 +181,8 @@ paste it in the document as needed. Examples:
 or you can also use the ``.. unicode::`` directive to include unicode characters.
 (More on directives later).
 
+.. nootropy-table-layout: {"version":1,"columnWidths":[400,null],"rowMinHeights":[null,null]}
+
 +---------------------------------------------+---------------------------------------------+
 | **Raw Text**                                | **Rendered As**                             |
 +---------------------------------------------+---------------------------------------------+
@@ -224,30 +227,31 @@ interpret the block literal text as markup.
 +-------------------------------------------------------+-------------------------------------------------------+
 
 Paragraphs 
-===========
+==========
 
 +---------------------------------------------+---------------------------------------------+
 | **Raw Text**                                |      **Result After Parsing**               |
 +---------------------------------------------+---------------------------------------------+
-| ::                                          |                                             |
-|                                             |                                             |
-|    Paragraphs are simply texts separated by | Paragraphs are simply texts separated by    | 
-|    blank lines.                             | blank lines.                                |
-|                                             |                                             |  
-|    This is another paragraph separated by a | This is another paragraph separated by a    |     
-|    blank line from the previous one.        | blank line from the previous one.           |                         
-|    The spacing between paragraphs are       | The spacing between paragraphs are          |
-|    usually controlled by the document theme | usually controlled by the document theme    |   
-|    (.css). Extra blank lines are ignored.   | (.css). Extra blank lines are ignored.      |
-|                                             |                                             |
-|                                             |                                             |
-|    This is another paragraph separated by   | This is another paragraph separated by      |     
-|    multiple blank lines from the previous   | multiple blank lines from the previous      |
-|    one.                                     | one.                                        |
+| ::                                          | Paragraphs are simply texts separated by    |
+|                                             | blank lines.                                |
+|    Paragraphs are simply texts separated by |                                             |
+|    blank lines.                             | This is another paragraph separated by a    |
+|                                             | blank line from the previous one.           |
+|    This is another paragraph separated by a | The spacing between paragraphs are          |
+|    blank line from the previous one.        | usually controlled by the document theme    |
+|    The spacing between paragraphs are       | (.css). Extra blank lines are ignored.      |
+|    usually controlled by the document theme |                                             |
+|    (.css). Extra blank lines are ignored.   |                                             |
+|                                             | This is another paragraph separated by      |
+|                                             | multiple blank lines from the previous      |
+|    This is another paragraph separated by   | one.                                        |
+|    multiple blank lines from the previous   |                                             |
+|    one.                                     |                                             |
 +---------------------------------------------+---------------------------------------------+
 
-You can use the ``|`` syntax to add additional breaks in between paragraphs or to simply 
+You can use the ``|`` syntax to add additional breaks in between paragraphs or to simply
 keep the text aligned.
+FIX-ME: The first paragraph in the literal_block is missing for the table below in the visual editor. This is not a problem in the preview panel.
 
 +---------------------------------------------+---------------------------------------------+
 | **Raw Text**                                |      **Result After Parsing**               |
@@ -265,6 +269,8 @@ keep the text aligned.
 
 Line Blocks 
 ------------
+
+FIX-ME: The first paragraph in the literal_block is missing for the table below in the visual editor. This is not a problem in the preview panel. Definitely need to Fix.,
 
 +----------------------------------------------+----------------------------------------------+
 | **Raw**                                      | **Rendered as**                              |
@@ -564,20 +570,21 @@ You can also create enumerated list using the following syntax pattern:
 +----------------------------------------------------+----------------------------------------------------+
 | **Raw Text**                                       | **Rendered as**                                    |
 +----------------------------------------------------+----------------------------------------------------+
-|::                                                  |                                                    |
+| ::                                                 | **Ordered list**                                   |
 |                                                    |                                                    |
-|   **Ordered list**                                 |**Ordered list**                                    |
-|                                                    |                                                    |
-|   (A) item 1 in the list                           |(A) item 1 in the list                              |
-|   (B) item 2                                       |(B) item 2                                          |
-|   (#) use ``#.`` for auto-numbering                |(#) use ``#.`` for auto-numbering                   |
-|                                                    |                                                    |
-|                                                    |                                                    |
+|    **Ordered list**                                | (A) item 1 in the list                             |
+|                                                    | (B) item 2                                         |
+|    (A) item 1 in the list                          | (#) use ``#.`` for auto-numbering                  |
+|    (B) item 2                                      |                                                    |
+|    (#) use ``#.`` for auto-numbering               |                                                    |
 +----------------------------------------------------+----------------------------------------------------+
 
 **Mixing List**
 
 You can also mix bulleted list and enumerated list.
+
+FIX-ME: The content of the table cell in row 1 column 1 is not compeletely
+visible in the visual editor. The preview panel is fine. The visual editor might have problem understand the line range for that particular column cell.
 
 +----------------------------------------------------+----------------------------------------------------+
 | **Raw Text**                                       | **Rendered as**                                    |
@@ -625,6 +632,9 @@ Syntax::
   * The rendering of the field list is determined by the document theme.
 
 * The value can be a phrase or multi-line block of text
+
+FIX-ME: The docinfo in cell row3 col2 did not render correctly in the visual editor. The line-range for the 
+edit source is also wrong.
 
 +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 | **Raw Text**                                                                    | **Rendered as**                                                                 |
@@ -857,15 +867,16 @@ Rendered as
 
 **Image Inclusion via URL**
 
+FIX-ME: The image in row2 col2 no longer render in the visual editor. This is not 
+a problem for the preview panel.
+
 +----------------------------------------------------------------+----------------------------------------------------------------+
 | Raw Text                                                       | Rendered as                                                    |
 +================================================================+================================================================+
-|::                                                              |                                                                |              
-|                                                                |                                                                |              
-|   .. image:: https://images.unsplash.com/25/puppy-love.jpg     |   .. image:: https://images.unsplash.com/25/puppy-love.jpg     |
-|      :alt: dog                                                 |      :alt: dog                                                 |
-|                                                                |                                                                |              
-|                                                                |                                                                |              
+| ::                                                             | .. image:: https://images.unsplash.com/25/puppy-love.jpg       |
+|                                                                |    :alt: dog                                                   |
+|    .. image:: https://images.unsplash.com/25/puppy-love.jpg    |                                                                |
+|       :alt: dog                                                |                                                                |
 +----------------------------------------------------------------+----------------------------------------------------------------+
 
 Tables [1]_ 
