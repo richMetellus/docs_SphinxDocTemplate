@@ -124,9 +124,8 @@ of inline markup.
     
 .. note:: 
    
-   Inline markup cannot be nested. So you cannot 
-   use something like this. FIX-ME: The line range for the the table below is wrong. 
-   It is missing the first horizontal row marker of the table ``+---``.
+   Inline markup cannot be nested in plain docutils. So you cannot
+   use something like this. 
 
    +-------------------------------------------+-------------------------------------------+
    | **Raw Text**                              | **Rendered as**                           |
@@ -136,6 +135,8 @@ of inline markup.
    |   **I want bold and *italic* text**.      |   **I want bold and *italic* text**.      |                                       
    |                                           |                                           | 
    +-------------------------------------------+-------------------------------------------+                                            
+
+   Use Nootropy style of element to do :color:`compound <#1a7f37>` :style:`inline <bold color=#0969da>` :underline:`format`.
 
 Escaping and Character-level markup 
 ------------------------------------
@@ -251,7 +252,6 @@ Paragraphs
 
 You can use the ``|`` syntax to add additional breaks in between paragraphs or to simply
 keep the text aligned.
-FIX-ME: The first paragraph in the literal_block is missing for the table below in the visual editor. This is not a problem in the preview panel.
 
 +---------------------------------------------+---------------------------------------------+
 | **Raw Text**                                |      **Result After Parsing**               |
@@ -270,7 +270,6 @@ FIX-ME: The first paragraph in the literal_block is missing for the table below 
 Line Blocks 
 ------------
 
-FIX-ME: The first paragraph in the literal_block is missing for the table below in the visual editor. This is not a problem in the preview panel. Definitely need to Fix.,
 
 +----------------------------------------------+----------------------------------------------+
 | **Raw**                                      | **Rendered as**                              |
@@ -583,8 +582,9 @@ You can also create enumerated list using the following syntax pattern:
 
 You can also mix bulleted list and enumerated list.
 
-FIX-ME: The content of the table cell in row 1 column 1 is not compeletely
-visible in the visual editor. The preview panel is fine. The visual editor might have problem understand the line range for that particular column cell.
+NEW: FIX-ME: cannot delele this paragraph here in the visual editor using the 
+block picker action ``Delete``. It reads an error document change under 
+new gesture.
 
 +----------------------------------------------------+----------------------------------------------------+
 | **Raw Text**                                       | **Rendered as**                                    |
@@ -633,8 +633,9 @@ Syntax::
 
 * The value can be a phrase or multi-line block of text
 
-FIX-ME: The docinfo in cell row3 col2 did not render correctly in the visual editor. The line-range for the 
-edit source is also wrong.
+NEW: FIX-ME: Cannot delete this block using the picker action Delete
+
+.. nootropy-table-layout: {"version":1,"columnWidths":[620,232],"rowMinHeights":[null,null,null]}
 
 +---------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
 | **Raw Text**                                                                    | **Rendered as**                                                                 |
@@ -867,17 +868,26 @@ Rendered as
 
 **Image Inclusion via URL**
 
-FIX-ME: The image in row2 col2 no longer render in the visual editor. This is not 
-a problem for the preview panel.
+FIX-ME: STILL-NOT-FIXED: The image in row 2 column 2 does not render in the visual editor if the cell only contain an image directive block. This is nota problem for the preview panel. The image preview appear in the example in row 3 column 3.
 
-+----------------------------------------------------------------+----------------------------------------------------------------+
-| Raw Text                                                       | Rendered as                                                    |
-+================================================================+================================================================+
-| ::                                                             | .. image:: https://images.unsplash.com/25/puppy-love.jpg       |
-|                                                                |    :alt: dog                                                   |
-|    .. image:: https://images.unsplash.com/25/puppy-love.jpg    |                                                                |
-|       :alt: dog                                                |                                                                |
-+----------------------------------------------------------------+----------------------------------------------------------------+
+.. nootropy-table-layout: {"version":1,"columnWidths":[481,235],"rowMinHeights":[null,null,null]}
+
++--------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+| Raw Text                                                                                                     | Rendered as                                                                                                  |
++==============================================================================================================+==============================================================================================================+
+| ::                                                                                                           | .. image:: https://images.unsplash.com/25/puppy-love.jpg                                                     |
+|                                                                                                              |    :alt: dog                                                                                                 |
+|    .. image:: https://images.unsplash.com/25/puppy-love.jpg                                                  |                                                                                                              |
+|       :alt: dog                                                                                              |                                                                                                              |
++--------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+| ::                                                                                                           | .. image:: https://images.unsplash.com/25/puppy-love.jpg                                                     |
+|                                                                                                              |    :alt: dog                                                                                                 |
+|    .. image:: https://images.unsplash.com/25/puppy-love.jpg                                                  |                                                                                                              |
+|       :alt: dog                                                                                              | A paragraph below the image makes the image appear in the visual editor.                                     |
+|                                                                                                              | Definite NEED to FIX.                                                                                        |
+| A paragraph below the image makes the image appear in the visual editor.                                     |                                                                                                              |
+| Definite NEED to FIX.                                                                                        |                                                                                                              |
++--------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
 
 Tables [1]_ 
 *************

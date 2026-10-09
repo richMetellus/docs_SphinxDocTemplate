@@ -529,7 +529,7 @@ Testing Structure Elements/Containers
 *************************************
 
 
-FIX-ME: Clicking on the nested child :underline:`grid-item-card` **Edit title and Options > Edit Source** opens the child element in the plain editor instead of in-place within the visual editor ❌. Editing the grid level 0, should just open the in-visual part-editor including the children.  
+Clicking on the nested child :underline:`grid-item-card` **Edit title and Options > Edit Source** opens the child element in-place within the visual editor ✅. Editing the grid level 0,  will just open the in-visual part-editor including the children ✅.  
 
 
 .. grid:: 2

@@ -108,13 +108,14 @@ Header 2: Admonition and Table
 |                                                                                                                                     |                                                     |
 | A normal paragraph here. I am going to press SHIFT + ENTER twice                                                                    |                                                     |
 |                                                                                                                                     |                                                     |
-| FIX-ME: The visual editor to plain text writer just inserted extra lines. Typing get duplicated. and one less character is missing  |                                                     |
+| Pressing SHIFT + ENTER twice using Nootropy visual editor, create a new block-like paragraph.                                       |                                                     |
+| one Shift Enter just create a new line in the document.                                                                             |                                                     |
 +-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
 | table cell resizing is only available through colum edit menu. Use the column block picker                                          |                                                     |
 +-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
 | .. image:: ../../_images/vexel-BD-wish.svg                                                                                          |                                                     |
 |                                                                                                                                     |                                                     |
-| FIX-ME: This image is not rendered in the visual editor but rendered in the preview panel.                                          |                                                     |
+| This image will rendered in Nootropy visual editor and in the preview panel.                                                        |                                                     |
 +-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
 |                                                                                                                                     |                                                     |
 +-------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------+
@@ -133,10 +134,6 @@ List-table
 
 a list table created from the visual editor
 
-FIX-ME: The row2 content is not rendered in the visual editor. The cells shows as empty 
-during the session even though the content exist in the plain-text editor and the preview panel.
-Attempting to modify the cell in the visual editor gives that warning: 
-
 TODO: FEATURE-ADD: Maybe add a check that will verify if the visual editor ``edit not applied the cell is no longer 
 in the table``
 and the plain-text editor are out-of-sync. If they are ouf of sycn, then present the 
@@ -148,7 +145,13 @@ user with a pop-up that will ask to reload from disk (the plain-text editor vers
    * - A header
      - another header 
    * - a cell in row 1
-     - another 
+     - another paragraph in the cell
+
+       Pressing Enter anywhere create a new paragraph automatically here
+       Shift + Enter in the visual editor created
+       this line break in the plain-text doc
+
+       Shift + Enter twice or just Enter create this new paragraph. 
 
 
 

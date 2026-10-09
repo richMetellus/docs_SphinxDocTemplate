@@ -129,8 +129,8 @@ Press Enter once will create a new block/paragraph by default.
 - but if you can have normal color like {color}`composite inline format <#bc4c00>` then the block is not marked as read-only, then you can modify in the visual editor without using any raw markup.
  
 - ~~strike~~ through created through the visual editor.
-- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble         <#1a7f37>`menu while the block is being created but once that's done for some reason this extension used to change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
-
+- You can have {mark}`inline  <#c8f7c5>` format {underline}`done `via the {color}`bubble <#1a7f37>` menu while the block is being created but once that's done for some reason this extension used to change it to read-only. This is now fixed and the rendered block can still have inline formatting and is no longer marked as opaque.
+- NEW: FIX-ME: having an inline higlight like this {mark}`inline  <#c8f7c5>` put an unecessary background color of rgba(255, 212, 0, 0.4). the only color that should apply is the span color and no background color.
 - create new bullet list using the `/` notation 
   - Press tab and it creates a nested bullet
   - This was created after pressing Enter.
@@ -306,67 +306,90 @@ a 'Edit source' click to modify")
 
 ## Testing Tables
 
-**A 3x2 table List table.**
-
-:::{list-table}
-:header-rows: 1
-
-* - List-table Column 1
-  - List-table Column 2
-* - TODO: FEATURE-ADD: Should be able to resize visually the table column and row width and heigh using cursor drag from the visual editor when possible. The user will just select the row or column high and drag to the positon and the software will compute the pixel for that and either use the option `:width:` or `:height:` if they are supported or use a comment that contain metadata using  json (for grid and simple table)
-    
-    Testing: To explicitly add an empty space in the table cell, use raw html
-
-    <br> </br>
-    
-    THis preserve space within a cell block.
-
-    
-    The plain-text has multiple empty line here but that won't be visible in the preview nor the visual editor webview: Great.
-
-  - TODO: FEATURE-ADD: the `…` icon should be available option
-    A user should be able to add in many types of blocks, such as code-block, admonition, etc… in a table cell whilst in the visual editor without the user requiring knowledge of the raw markup.
-    a raw code block markup. This cell picker and also the bubble menu should include an option that will allow the user to clear the content of the table cell.
-    
-    **More Testing**
-    
-    - a nested inside a table cell.
-    - another bullet list create inside the nested table using the visual editor by typing `*` .
-
-* - 
-  - 
-
-:::
-
+We will test the different table styles supported by MyST in Nootropy.
 
 ### A Pure GFM table
 
+<!-- nootropy-table-layout: {"version":1,"columnWidths":[292,371],"rowMinHeights":[null,null,null,null]} -->
+
 | A GFM row1,column2 header | header is modifiable from visual editor. Changes are applied to plain-text editor.    |
 | --- | --- |
-| # H1 raw markup will not parse in Visual editor, neither in Preview <br> The cell used to be parsed as their own document.the document here will render.<br> This is written after the `<br>` | typing here from visual editor work here. Press entter<br>create a explicit `br` directive. Press Shift + Enter <br>create a new explicit `br` block. This sometimes stop working sometimes after multiple \[SHIFT + Enter\]. FIX-ME.<br>FIX-ME: One press of keyboard `Enter `should create a new in cell block instead of a new line break.<br>FIX-ME: Sometimes typing in the text-editor will cause this visual editor to miss some changes. Adding an image here   ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg) <br> </br> * this image from unplash url renders in the preview panel. The bullet list is not supported in GFM markdown, neither in Nootropy so this line will not rendered as bullet list..
-  |
+| # H1 raw markup headers will not parse in pure GFM table style. No header in Visual editor, nor in Preview webview<br>Use different table style if you want the cell content to be parsed as their own document tree.<br><br>Pressing \[Shift + Enter\] or just \[Enter\]<br><br>create line breaks \<br> within the plain-text document.<br><br><br><br><br> This is written after the `<br>` | ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg)
+| A cell created in the visual editor that has paragraph spanning<br>multli line. | A visually editable cell created in the visual editor that can have inline format.  *Italic, **bold, `inline code bold`*** , {underline}`underline`, ~~strikethrough~~, {color}`colored text <#8250df>`, {mark}` highlighted text <#ffd6e7>`. |
+| **Testing Compound cell** <br><br> A visually editable cell created in the visual editor that can have inline format.  *Italic, **bold, `inline code bold`*** , {underline}`underline`, ~~strikethrough~~, {color}`colored text <#8250df>`, {mark}` highlighted text <#ffd6e7>`.<br><br>Add an image below<br><br>![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg) <br><br>This paragraph had to be written using the plain-text editor since the cursoor after the image was not always present when using the visual editor. Once the block is createad in plain-text I can modify it here in the visual editor.<br><br>of course Enter or Shift + Enter still work.<br><br>Great.<br><br>You cannot use the slash notation nor the cell `…` glyph to add block element. Just using `Shift + Enter` or simply `Enter` to create new line break. |  | 
 
-### MySt GFM table with caption. 
+### Using MyST table editor
+
+<!-- nootropy-table-layout: {"version":1,"columnWidths":[251,674],"rowMinHeights":[null,null,null,null]} -->
 
 ```{table} My Table Caption
 
 | Column 1 | Column 2 |
 | --- | --- |
-| another paragraph cell<br>Can insert text after pressing SHIFT + Enter<br><br>Enter cause a line break and not new block | row can be inserted from the visual editor and the change will make it to the plain-text.<br> - not bullet point here. <br> You can do inline **formatting**, `code`, *italic* <br> you can insert image using the plain-text editor.  NEW: FIX-ME: Image insert while in  a GFM table cell is not yet supported in the visual editor. I had to use the plain-text editor to inser the below image.<br> ![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg) <br>All this a considered one big paragraph in the cell. I mostly modified this in the plain-text editor since I cannot insert an image here in the visual editor without complaint. <br><br>create new line break paragraph with no worry. |
+| another paragraph cell<br>Can insert text after pressing SHIFT + Enter<br><br>Enter cause a line break and not new block | row can be inserted from the visual editor and the change will make it to the plain-text.<br> - not bullet point here. <br> You can do inline **formatting**, `code`, *italic* <br> you can insert image using the plain-text editor.  NEW: FIX-ME: Image insert while in  a GFM table cell is not yet supported in the visual editor. I had to use the plain-text editor to inser the below image.<br> <br><br>![Nice Puppy](https://images.unsplash.com/25/puppy-love.jpg) <br>All this a considered one big paragraph in the cell. I mostly modified this in the plain-text editor since I cannot insert an image here in the visual editor without complaint. <br><br>create new line break paragraph with no worry.  |
 | Modify the test here | Modify the cell here in the visual editor |
+| \# A Header here will not parse |  |
 ```
 
 
-## CSV Table using MyST
+### Complex table with raw directive:
+
+**Making Table with HTML style using raw directive in plain-text editor**
+
+:::{raw} html
+
+<table>
+   <tr>
+      <th rowspan="2">Projection</th>
+      <th colspan="3" align="center">Area in square miles</th>
+   </tr>
+   <tr>
+      <th align="right">Large Horizontal Area</th>
+      <th align="right" style="background: -webkit-linear-gradient(20deg, #09009f, #E743D9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Large Vertical Area</th>
+      <th align="right">Smaller Square Area
+      <th>
+   </tr>
+   <tr>
+      <td>Albers Equal Area</td>
+      <td align="right">7,498.7</td>
+      <td align="right">10,847.3</td>
+      <td align="right">35.8</td>
+   </tr>
+   <tr>
+      <td>Web Mercator</td>
+      <td align="right">13,410.0</td>
+      <td align="right">18,271.4</td>
+      <td align="right">63.0</td>
+   </tr>
+   <tr>
+      <td>Difference</td>
+      <td align="right" style="background-color: red;color: white">5,911.3</td>
+      <td align="right">7,424.1</td>
+      <td align="right">27.2</td>
+   </tr>
+   <tr>
+      <td>
+         <bold>Percent Difference</bold>
+      </td>
+      <td align="right" style="background-color: green;color: white">44%</td>
+      <td align="right">41%</td>
+      <td align="right">43%</td>
+   </tr>
+</table>
+:::
+
+### CSV Table using MyST
+
+<!-- nootropy-table-layout: {"version":1,"columnWidths":[257,394],"rowMinHeights":[null,null,null,null]} -->
 
 ```{csv-table}
 :header-rows: 1
 
 Column 1, Column 2
-"csv table row", "- row 1 col2 as bullet list ✅
+csv table row, "- row 1 col2 as bullet list ✅
 - Another bullet list
-  - attempting to nest bullet list here. FIX-ME: The indentation level is cleary visible in the webview pannel but not in the visual editor. The indentation is correct in the plain-text doc.",
-
+  - attempting to nest bullet list here. The indentation level is cleary visible in the webview preview pannel and he visual editor although the nested bullet can use a different styling. The indentation is correct in the plain-text doc."
+"", ""
 "# h1 added using he plain-text editor
 
 - a bullet list here
@@ -380,12 +403,18 @@ Column 1, Column 2
 - Another bullet list
   - attempting to nest bullet list here. The indentation level is cleary visible in the webview pannel as well as the visual editor ✅. The indentation is correct in the plain-text doc.
   
-  FIX-ME: Writting in this block using the visual editor does not commit to the plain-text document.The edits in the visual editor are not picked up. Bi-directional syncing should still work.",
+  Writing this block here in the visual editor will commit to the plain-text editor.
+- [ ] Task list item
+
+1. number list
+2. Very good."
 ```
 
 
 
-## List-Table
+### List-Table
+
+<!-- nootropy-table-layout: {"version":1,"columnWidths":[230,442],"rowMinHeights":[null,null]} -->
 
 ```{list-table}
 :header-rows: 1
@@ -402,6 +431,46 @@ Column 1, Column 2
 
     We can have **inline bold, *italic, {underline}`underline`***
 ```
+
+**A 3x2 table List table with a caption.**
+
+:::{list-table} List table with caption
+:header-rows: 1
+
+* - List-table Column 1
+  - List-table Column 2
+* - TODO: FEATURE-ADD: Should be able to resize visually the table column and row width and heigh using cursor drag from the visual editor when possible. The user will just select the row or column high and drag to the positon and the software will compute the pixel for that and either use the option `:width:` or `:height:` if they are supported or use a comment that contain metadata using  json (for grid and simple table)
+    
+    Testing: To explicitly add an empty space in the table cell, use raw html
+
+    <br> </br>
+    
+    THis preserve space within a cell block.
+
+    
+    The plain-text has multiple empty line here but that won't be visible in the preview nor the visual editor webview: Great.
+  - the `…` icon is now an available option
+    A user should be able to add in many types of blocks, such as code-block, admonition, etc… in a table cell whilst in the visual editor without the user requiring knowledge of the raw markup.
+    a raw code block markup. This cell picker and also the bubble menu should include an option that will allow the user to clear the content of the table cell.
+
+    **More Testing**
+
+    - a nested inside a table cell.
+    - another bullet list create inside the nested table using the visual editor by typing `*` .
+    - Bullet list created using visual editor and it sync back to plain-text editor.
+
+* - a row that sync to the plain text editor
+  - # H1 in col 2 created from visual editor, sync to plain text
+
+    A simple {color}`paragraph with text color here. NEW: FIX-ME: Need to remove color in this slice. Selecting a text slice open up the a bad color picker inline-properties form with dialog block role instead of using pop-in up the visual editor bubble menu. Need it to only open the bubble menu instead so remove. <#1a7f37>`
+
+    A pagraph that span multi line
+    in the plain-text and visual editor due to the user press of `SHIFT + ENTER`
+
+    We can have **inline bold, *italic, {underline}`underline`***
+
+    NEW: FIX-ME: Select the slice text `underline` in the visual editor popup the form.nootropy-ve-inline-properties. This form is not necessary. The action should be done through the bubble menu instead.
+:::
 
 ## Diagraming/Whiteboard
 
@@ -427,7 +496,7 @@ flowchart LR
 | Title | Status | Due |
 |---|---|---|
 | Write spec | Doing | 2026-10-02 |
-| Review spec. | Todo |  |
+| Implement spec. | Todo |  |
 | Planning Meeting | Done |  |
 <!-- board:end -->
 <!-- board:view id="tasks-kanban" data="tasks" type="kanban" group-by="Status" columns="Todo|Doing|Done" -->
